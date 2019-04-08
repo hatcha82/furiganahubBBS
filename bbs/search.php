@@ -90,6 +90,7 @@ if ($stx) {
             switch ($field[$k]) {
                 case 'mb_id' :
                 case 'wr_name' :
+                case 'wr_artist' :
                     $str .= "$field[$k] = '$s[$i]'";
                     break;
                 case 'wr_subject' :

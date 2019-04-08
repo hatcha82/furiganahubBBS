@@ -138,7 +138,15 @@ if ($board['bo_use_signature'] && $view['mb_id']) {
     $signature = conv_content($signature, 1);
 }
 
-include_once($board_skin_path.'/view.skin.php');
+
+$stx = get_text(stripslashes($stx));
+if(strpos($write_table,'furigana') !== false ){
+    include_once($board_skin_path.'/view.furigana.php');
+}else{
+    include_once($board_skin_path.'/view.skin.php');
+}
+
+
 
 @include_once($board_skin_path.'/view.tail.skin.php');
 ?>

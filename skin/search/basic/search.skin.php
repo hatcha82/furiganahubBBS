@@ -18,8 +18,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
         <option value="wr_subject||wr_content"<?php echo get_selected($_GET['sfl'], "wr_subject||wr_content") ?>>제목+내용</option>
         <option value="wr_subject"<?php echo get_selected($_GET['sfl'], "wr_subject") ?>>제목</option>
         <option value="wr_content"<?php echo get_selected($_GET['sfl'], "wr_content") ?>>내용</option>
+        <option value="wr_artist"<?php echo get_selected($_GET['sfl'], "wr_artist") ?>>아티스트</option>
         <option value="mb_id"<?php echo get_selected($_GET['sfl'], "mb_id") ?>>회원아이디</option>
         <option value="wr_name"<?php echo get_selected($_GET['sfl'], "wr_name") ?>>이름</option>
+        
     </select>
 
     <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>

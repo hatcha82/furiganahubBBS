@@ -128,7 +128,7 @@ border: 1px solid #558ab7 !important;
 box-shadow: 0 1px 3px rgba(0,0,0,0.3)}
 #gnb ul:after {display:block;visibility:hidden;clear:both;content:""}
 #gnb .gnb_1dli{float:left;line-height:50px;padding:0 15px;position:relative;}
-#gnb .gnb_1dli:hover{background:#1a30a7;
+#gnb .gnb_1dli:hover{background:#63b2ff;
 -webkit-transition: background-color 2s ease-out;
 -moz-transition: background-color 0.3s ease-out;
 -o-transition: background-color 0.3s ease-out;
@@ -157,8 +157,8 @@ transition: all 0.3s ease-out;}
 .gnb_wrap .gnb_empty a{color:#fff;text-decoration:underline}
 .gnb_wrap .gnb_al_ul .gnb_empty, .gnb_wrap .gnb_al_ul .gnb_empty a{color:#555}
 
-#gnb .gnb_menu_btn{background:#176abb;color:#fff;width:50px;height:50px;border:0;vertical-align:top;font-size:18px}
-#gnb .gnb_close_btn{background:#176abb;color:#fff;width:50px;height:50px;border:0;vertical-align:top;font-size:18px;position:absolute;top:-50px;left:0}
+#gnb .gnb_menu_btn{background:#63b2ff;color:#fff;width:50px;height:50px;border:0;vertical-align:top;font-size:18px}
+#gnb .gnb_close_btn{background:#63b2ff;color:#fff;width:50px;height:50px;border:0;vertical-align:top;font-size:18px;position:absolute;top:-50px;left:0}
 #gnb .gnb_mnal{padding:0}
 
 #gnb_all{display:none;position:absolute;width:100%;z-index:99;}
@@ -192,10 +192,11 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 #ft h1 {position:absolute;font-size:0;line-height:0;overflow:hidden}
 #ft_wr {margin:0 auto;position:relative;}
 #ft_link{padding:15px 0;border-bottom:1px solid #eee}
-#ft_link a{display:inline-block;padding:0 8px;line-height:1.083em;font-weight:bold}
+#ft_link a{display:inline-block;padding:0 8px;line-height:1.083em;font-weight:bold;color:#aaa}
+#ft_link a:hover{color:#888}
 #ft_catch{margin:20px 0 10px}
 #ft_catch img{width:30px;border-radius: 5px}
-#ft_copy{color:#555;font-size:0.92em}
+#ft_copy{color:#aaa;font-size:0.92em}
 #top_btn {position:fixed;bottom:20px;right:20px;width:50px;height:50px;line-height:46px;border:2px solid #333;color:#333;text-align:center;font-size:15px;z-index:90;background:rgba(255,255,255,0.5)}
 #top_btn:hover{border-color:#3059c7;background:#3059c7;color:#fff}
 

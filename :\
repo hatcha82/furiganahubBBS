@@ -1,4 +1,15 @@
 <?php
+
+$url =  "{$_SERVER['REQUEST_URI']}";
+$pos =  strpos($url, "/article/detail/");
+echo $pos."$url";
+
+if ($pos === false){
+	$url = "Location: http://www.furiganahub.com". $url;
+	echo "포함됨";
+//	header($url);
+}
+include_once('./referer.php');
 include_once('./_common.php');
 
 define('_INDEX_', true);

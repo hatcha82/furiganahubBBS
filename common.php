@@ -399,7 +399,7 @@ if ($_SESSION['ss_mb_id']) { // 로그인중이라면
     }
     // 자동로그인 end ---------------------------------------
 }
-
+//include_once('./referer.php');
 
 $write = array();
 $write_table = "";

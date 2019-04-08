@@ -245,5 +245,9 @@ if ($board['bo_use_rss_view']) {
 }
 
 $stx = get_text(stripslashes($stx));
-include_once($board_skin_path.'/list.skin.php');
+if(strpos($write_table,'furigana') !== false ){
+    include_once($board_skin_path.'/list.furigana.php');
+}else{
+    include_once($board_skin_path.'/list.skin.php');
+}
 ?>
