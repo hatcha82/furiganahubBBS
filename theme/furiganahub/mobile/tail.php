@@ -17,7 +17,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
             <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy">개인정보처리방침</a>
             <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision">서비스이용약관</a>
         </div>
-        Copyright &copy; <b>소유하신 도메인.</b> All rights reserved.<br>
+        Copyright &copy; <b>www.furiganahub.com</b> All rights reserved.<br>
     </div>
     <button type="button" id="top_btn"><i class="fa fa-arrow-up" aria-hidden="true"></i><span class="sound_only">상단으로</span></button>
     <?php
