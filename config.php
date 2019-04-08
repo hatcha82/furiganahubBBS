@@ -156,7 +156,7 @@ define('G5_MOBILE_AGENT',   'phone|samsung|lgtel|mobile|[^A]skt|nokia|blackberry
 
 // SMTP
 // lib/mailer.lib.php 에서 사용
-define('G5_SMTP',      '127.0.0.1');
+define('G5_SMTP',      'smtp.t2l.co.kr');
 define('G5_SMTP_PORT', '25');
 define('G5_SMTP_AUTH','true');
 define('G5_SMTP_USER_ID' , 'cbha@t2l.co.kr');
