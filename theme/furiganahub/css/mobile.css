@@ -45,12 +45,12 @@ ul{list-style:none;}
 #logo img{vertical-align:middle;max-height:100%;width:auto;}
 #logo a{color:#fff;font-size:20px;line-height: 24px;font-weight: bold}
 #gnb_open {position:absolute;top:10px;left:10px;padding:0 10px;height:30px;width:30px;border:0;background-size:70%;color:#fff;background:none; font-size: 16px;}
-#gnb {display:none;background:#262626;position:fixed;top:0;left:0;z-index:99999;height:100%;overflow-y:auto;width:300px;
+#gnb {display:none;background:#ededed;position:fixed;top:0;left:0;z-index:99999;height:100%;overflow-y:auto;width:300px;
 -webkit-box-shadow:0 0 5px  rgba(55,55,5,0.4);
 -moz-box-shadow:0 0 5px  rgba(55,55,5,0.4);
 box-shadow: 0 0 5px  rgba(55,55,5,0.4);}
 
-#gnb a {display:block;color:#efefef}
+#gnb a {display:block;}
 .gnb_1dli{position:relative;line-height:40px;}
 .gnb_1dli button{position:absolute;top:0;right:0;background:url;border:0;width:40px;height:40px;overflow:hidden;border:0;background:url(../img/mobile/gnb_bg.png) no-repeat 50% 50%;text-indent:-9999px}
 .gnb_1dli button.btn_gnb_cl{background:url(../img/mobile/gnb_bg2.png) no-repeat 50% 50%}
@@ -58,7 +58,7 @@ box-shadow: 0 0 5px  rgba(55,55,5,0.4);}
 .gnb_2dul {display:none;}
 .gnb_2da {border-bottom:1px solid #2d2d2d;background:url(../img/btn_next.gif) no-repeat 21px 17px;padding-left:30px}
 #gnb_close {display:block;margin:0;height:50px;width:100%;border:0;background:url(../img/mobile/btn_close.png) no-repeat right 50%  
-#222222;background-size:25px;color:#fff;text-indent:-999999999px;overflow:hidden}
+#1976d2;background-size:25px;color:#fff;text-indent:-999999999px;overflow:hidden}
 
 #gnb_empty {padding:20px 0;color:#fff;text-align:center;line-height:2em}
 #gnb_empty a {display:inline;text-decoration:underline}
@@ -66,7 +66,7 @@ box-shadow: 0 0 5px  rgba(55,55,5,0.4);}
 #hd_sch {text-align:center;padding:20px}
 #hd_sch h2 {position:absolute;font-size:0;text-indent:-9999em;line-height:0;overflow:hidden}
 #hd_sch form {position:relative;padding-right:40px;}
-#hd_sch #sch_stx {width:100%;height:45px;background:#464646;border:0;padding-left:10px;border-radius:3px 0 0 3px;color:#fff}
+#hd_sch #sch_stx {width:100%;height:45px;background:#c7c7c7;border:0;padding-left:10px;border-radius:3px 0 0 3px;color:#fff}
 #hd_sch #sch_submit {position:absolute;top:0;right:0;width:40px;height:45px;;border:0;border-radius:0 3px 3px 0;cursor:pointer;color:#fff;background:#464646;font-size:1.25em}
 
 #user_btn {position:absolute;top:10px;right:10px;padding:0 10px;height:30px;width:30px;border:0;;color:#fff;font-size:16px;background:none;letter-spacing:-0.1em}
@@ -75,9 +75,12 @@ box-shadow: 0 0 5px  rgba(55,55,5,0.4);}
 -moz-box-shadow:0 0 5px  rgba(55,55,5,0.4);
 box-shadow: 0 0 5px  rgba(55,55,5,0.4);}
 #user_close {display:block;margin:0;height:50px;width:100%;border:0;background:url(../img/mobile/btn_close.png) no-repeat right 50%  
-#222;background-size:25px;color:#fff;text-indent:-999999999px;overflow:hidden}
+#1976d2;background-size:25px;color:#fff;text-indent:-999999999px;overflow:hidden}
 #snb_cnt span{display:inline-block;padding: 0 7px;height:18px;line-height:18px;font-size:12px;background:#3ca1ff;border-radius:20px;color:#fff}
-
+#ol_after{background: #ccc}
+#ol_after_pt{background: #a5a5a5}
+#ol_after_memo{background: #b5b5b5}
+#ol_after_scrap{background: #a5a5a5}
 #hd_nb{margin:20px;}
 #hd_nb:after {display:block;visibility:hidden;clear:both;content:""}
 #hd_nb li{width:50%;float:left;text-align:center;line-height:25px;font-size:1.083em;font-weight:bold}
