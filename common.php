@@ -51,7 +51,7 @@ function g5_path()
 $g5_path = g5_path();
 
 include_once($g5_path['path'].'/config.php');   // 설정 파일
-
+include_once($g5_path['path'].'/function.php'); 
 unset($g5_path);
 
 

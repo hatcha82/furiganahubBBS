@@ -136,14 +136,14 @@ transition: background-color 0.3s ease-out;}
 
 .gnb_1dli .bg{display:inline-block;width:10px;height:10px;overflow:hidden;background:url(../img/gnb_bg2.gif) no-repeat 50% 50%;text-indent:-999px}
 .gnb_1da {display:inline-block;font-weight:bold;color:#fff;text-decoration:none;}
-.gnb_2dli{border-top:1px solid #253dbe}
+.gnb_2dli{border-top:1px solid #eee}
 .gnb_2dli:first-child{border:0}
-.gnb_2dul {display:none;position:absolute;top:50px;min-width:140px;background:#1a30a7;padding: 0;
+.gnb_2dul {display:none;position:absolute;top:50px;min-width:140px;background:#1976d2;padding: 0;
 -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.1);
 -moz-box-shadow:  0 1px 5px rgba(0,0,0,0.1);
 box-shadow: 0 1px 5px rgba(0,0,0,0.1);}
 .gnb_2da {display:block;padding:0 10px;line-height:40px;color:#c3cbf7;text-align:left;text-decoration:none}
-a.gnb_2da:hover{background:#0e2080;
+a.gnb_2da:hover{background:#63b2ff;
 -moz-transition: all 0.3s ease-out;
 -o-transition: all 0.3s ease-out;
 transition: all 0.3s ease-out;}
@@ -177,9 +177,10 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 #wrapper{}
 #container_wr:after {display:block;visibility:hidden;clear:both;content:""}
 #container_wr {z-index:5;margin:0 auto;height:100%;zoom:1}
-#aside {float:right;width:305px;padding:0;background: #e7ebf3;height: 100%;border: 1px solid #adbfd2;margin:20px 0 20px 20px}
+#aside {float:right;width:335px;padding:0;background: #e7ebf3;height: 100%;border: 1px solid #adbfd2;margin:20px 0 20px 20px}
+#aside2 {position: absolute;left:160px}
 
-#container {z-index:4;position:relative;float:left;min-height:500px;height:auto !important;margin:20px  0;height:500px;font-size:1em;width:875px;zoom:1}
+#container {z-index:4;position:relative;float:left;min-height:500px;height:auto !important;margin:20px  0;height:500px;font-size:1em;width:845px;zoom:1}
 #container:after {display:block;visibility:hidden;clear:both;content:""}
 #container_title {font-size:1.333em;margin:0 auto;font-weight:bold;}
 #container_title span{margin:0 auto 10px;display:block;line-height:30px;}
@@ -188,6 +189,7 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 .lt_wr:nth-child(2n+1){clear:both}
 .latest_wr:after {display:block;visibility:hidden;clear:both;content:""}
 /* 하단 레이아웃 */
+
 #ft {border-top:1px solid #d5d5d5;background:#fff;padding-bottom:30px;margin:0 auto;text-align:center}
 #ft h1 {position:absolute;font-size:0;line-height:0;overflow:hidden}
 #ft_wr {margin:0 auto;position:relative;}

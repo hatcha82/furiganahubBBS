@@ -8,7 +8,12 @@ if (G5_IS_MOBILE) {
 ?>
 
     </div>
+    <div id="aside2">
+    <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>            
+    </div>
     <div id="aside">
+    
+      
         <?php
         //공지사항
         // 이 함수가 바로 최신글을 추출하는 역할을 합니다.
@@ -19,6 +24,11 @@ if (G5_IS_MOBILE) {
         <?php echo outlogin('theme/basic'); // 외부 로그인, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         <?php echo visit('theme/basic'); // 접속자집계, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
+        <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
+        <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>    
+    </div>
+    <div style="width:845px;float:left"> 
+        <?=adfitBanner("DAN-t4w6dr2ubfat","728" ,"100")?>          
     </div>
 </div>
 
@@ -28,9 +38,11 @@ if (G5_IS_MOBILE) {
 <hr>
 
 <!-- 하단 시작 { -->
-<div id="ft">
 
-    <div id="ft_wr">
+
+
+<div id="ft">
+    <div id="ft_wr">  
         <div id="ft_link">
             <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company">회사소개</a>
             <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy">개인정보처리방침</a>

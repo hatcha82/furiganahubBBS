@@ -4,13 +4,27 @@ include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);
-?>
 
+function displayFuriganaSongWithTranslate($furiganaText,$translateText){
+    $furigana = explode( "\n", $furiganaText);
+    $translate = explode( "\n",$translateText);
+    $html = "";
+    for ($i=0; $i<=count($translate); $i++) {               
+            $html.="$furigana[$i]<br>$translate[$i]<br>";            
+    }            
+    return $html;
+}
+
+?>
+            
+<?php
+
+?>
 <script src="<?php echo G5_JS_URL; ?>/viewimageresize.js"></script>
 
 <!-- 게시물 읽기 시작 { -->
 
-<article id="bo_v" style="width:<?php echo $width; ?>">
+<article id="bo_v" style="width:<?php echo $width; ?>">       
     <header>
         <h2 id="bo_v_title">
             <?php if ($category_name) { ?>
@@ -18,20 +32,34 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php } ?>
             <span class="bo_v_tit">
             <?php
-            echo cut_str(get_text($view['wr_subject']), 70); // 글제목 출력
+            echo get_text($view['wr_subject']); // 글제목 출력
             ?></span>
         </h2>
-    </header>
-
+        
+    </header>    
     <section id="bo_v_info">
         <h2>페이지 정보</h2>
-        <span class="sound_only">작성자</span> <strong><?php echo $view['name'] ?><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></strong>
+        <span class="sound_only">Artist</span> <strong><?php echo $view['name'] ?><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></strong>
         <span class="sound_only">댓글</span><strong><a href="#bo_vc"> <i class="fa fa-commenting-o" aria-hidden="true"></i> <?php echo number_format($view['wr_comment']) ?>건</a></strong>
         <span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> <?php echo number_format($view['wr_hit']) ?>회</strong>
         <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></strong>
 
     </section>
-
+    <section style="">
+            <ul class="bo_v_left" style="margin-top:0">
+                <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01 btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 수정</a></li><?php } ?>
+                <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01 btn" onclick="del(this.href); return false;"><i class="fa fa-trash-o" aria-hidden="true"></i> 삭제</a></li><?php } ?>
+                <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" class="btn_admin btn" onclick="board_move(this.href); return false;"><i class="fa fa-files-o" aria-hidden="true"></i> 복사</a></li><?php } ?>
+                <?php if ($move_href) { ?><li><a href="<?php echo $move_href ?>" class="btn_admin btn" onclick="board_move(this.href); return false;"><i class="fa fa-arrows" aria-hidden="true"></i> 이동</a></li><?php } ?>
+                <?php if ($search_href) { ?><li><a href="<?php echo $search_href ?>" class="btn_b01 btn"><i class="fa fa-search" aria-hidden="true"></i> 검색</a></li><?php } ?>
+            </ul>
+            <ul class="bo_v_com" style="margin-top:0">
+            <li><a href="<?php echo $list_href ?>" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+                <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01 btn"><i class="fa fa-reply" aria-hidden="true"></i> 답변</a></li><?php } ?>
+                <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a></li><?php } ?>
+            </ul>
+    </section>
+    <div style="clear:both"/>
     <section id="bo_v_atc">
         <h2 id="bo_v_atc_title">본문</h2>
 
@@ -51,19 +79,34 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             echo "</div>\n";
         }
          ?>
-        <style>
-            .contents{font-size:14px}
-            #bo_v_furigana {}
-            #bo_v_furigana rt{color:red}
-        </style>
-        <!-- 본문 내용 시작 { -->
-        <div class="contents">
         
-        <!-- <div id="bo_v_con"><?php echo get_view_thumbnail($view['content']); ?></div> -->
-        <pre id="bo_v_furigana"><?php echo $view['wr_furigana'] ?></pre>
-        <pre id="bo_v_con"><?php echo $view['wr_translate']; ?></pre>
+        <!-- 본문 내용 시작 { -->
+        <div class="contents"> 
+            
+            <div id="bo_v_song_meta">                
+               
+                <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_2']); ?>"/>              
+                <br>
+                
+            </div>
+
+            
+            <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
+            
+            <div id="youtube_area"style="width:480px;margin:10px auto;margin-bottom:20px;">
+                <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" > 
+                    <img style="height:20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdsAAABqCAMAAADDRQtiAAAAw1BMVEX/////AAAoKCgiIiIlJSUAAAAgICAqKipCQkLo6OgVFRUeHh7c3Nzs7OzAwMBhYWE9PT0MDAxycnJSUlLMzMygoKD/6Oj/MzP/kJD39/eEhIRXV1ddXV0ZGRn/wMA1NTWzs7P/yclISEg3NzfY2Nj/2tr/8PB4eHhra2v/9PSurq6Kior/R0eWlpb/ExO5ubn/3d3/ZGT/b2//pKT/mJj/ICD/t7f/h4f/VFT/gID/Kir/QED/rKz/TEz/z8//XV3/bW0aO/7jAAAQwklEQVR4nO2d6WKCOBCAqQQV8KJepZbaeldrtffd3fd/qq1cmQmJokCN286/FoQkHznmShRlK7kajUat5fDr0pVzXz5OePLw4V/+vvPrazgcLluj7d72J9nJN8lWa3l+f/L8/Hx3+8/n9Xv7W95ujnaQm5ubx7f2+/Xny+3d68n909dy2WqNRlf7ruMvlK/759fbl/fdOMbm/fb+cnfyMfwD/EOyfLp7yxIoV17uh/uu9/9erp6uM+2pYrn5fPqd3bc8vYBiZ/Wey5f9gPXk+imresksJc2gYmnlbN5y9bpPsiu5/YUL6ZKWA6Jmw3b5vm+0R0ePS0HhdCS8Bth8RzIp67Flq5f/BNvhz6+gOPLIX1PZk1qRSm0SnZVK8IZif5p289h19IJ1UutsA+gH2LYe943Vk0f+sDw3CBU1V4rccKHBG4xG2u1j9/MkpuRrcrG9kmBA9uSaW76GAVvAiqI7NsF1Uki9gewaycUUUpSL7fO+kVJ54BbQgU3rzCPXiyq4np+k3kCHy3a4b6BQuOupszxkd8Ze1guw6a1F6i10uGz/2TdPKP/wSjiFgzLps4upChqSu9H5OKkcLFupuu3REW+tPIAdk+QGzOUmRK+epW/dOVi2Es22K+HNuHYdTqgGO+hO4JDtzNJuoMNlO5JmkezJDa+Qp846eipseY3t1SnIobKVbEg+OuLpuBULNkEdX9RhA5FuBgb3Q2X7sW+WrHxwCllGXdPCF9FKyzxOuX1WYvdNFQqDE14yZbJd3O6bJSvPvFKiKZUZdtGAbaRucFRWVs8OlDpG20PXJhKxlWy6/daCeK5ctBQ2mvCSfYYWWnrK7eO9A4oyQB33e2mHL28h2bKVxZRM5bHFKeYANoJzCi/pXaggddNtHq6UMNtKgidlyvZy3yijwmOrIBW2AztHA66zMPaM5FDYPu2bZFQueeWE7gBC4MA7R8N16j4gjhwK2/t9k4zKPa+cC0gQuYKqYJlFaplMt4wcCtu9h9JE5ZXbCnBWha4gpHtm4APileVA2F7vm2RUuO4CpQMaNF+l/x/kAFu8gs5KDoXtnqJW1wnfQT8DWiwp0sUUHqx/Ykg+GLb7BsmRNjdWuQGagRSo9QIyV3uZRfhC+WO7s/DjHctwXgWuIBhzkYUPiCMHwnaZAEFmU/UXt6hjkwfRhq1jcZrZtsuupNijf4CtvYqajVFmv3bcGy93J9BuZeVm4Cq4yOyo9oL/IsuFxtZRn84nvWK/0K31zmbTtLx/mbNtnHZyhmbkOrN1RbYrzdNJvdgtFPr14/kistRIYLpot5Srk/SAAjnnVgW58rTgv9BywTj/9GZNM5y86kW2qo6hkVk03mbQqQI5uwgvlI/hhSoY7oVsSxP0LKCpjdGzQk2Ny7ZS1BzX70VUR+uIjDGVqmbR2pmOpXWZfKIEpov2yjbYysKNJEgNghpu6AqCIzXSgMrzrsE443LEKMzYrt3Q8kAs+gi9b4ILBojAE7IdqOgnwN1Yd8AFU13DtnxsoqhNlevYGpw50DPm/dzpoYiUh90JtD2772U7Pai+cA1T2JcXuPLKPdAQKvjGGz2L508nRp0Zu9CgDj8PHTnkoUotZosCLqErGQUF0QjqKNtSEXosVzdbF9GmaObMHEdUDX7dCYKl2oFN/z5tHZnrwf0ehUCtA5+AjiZh2icvLLbPhi1ewHOYXGwHuUh3JGpk0h1zv9uVaON02SqjlMPp/uWz1fu0Rmrd47gAZExar4ohDoJRTdRzpWJrFzifpMkGZM+s6E1haegkn8Cc3Aa+uK9Uc3df+Gyh2ZGoHiA4TtOgc9zGrOTrQhfhftkSfcwMyP4b8HrqwuDdFIgW3vzv7gTayM96maKPvy1gC9fEfhUQ7lA9rHNnI9pW0MQhEdtuk08NDEjKyogjmm68ggbx2VcJcgrajA/9PjW6jwK2JVB1z3oBjVX5MHlzyjYRYf+Eiy552BZEvCxosJrj2q1UIHzzhc/2Mz22SusuLbgCtnBR7LV1g+sD6qLKEkct5PFYZwJQErF1RTUcg11PoaUyWkoQs9urdVHt1I53X5LA8wjb9KZdAVvllI613qIYTj2hynuBaBFz3hg0xnhxBTqCXGyJ1ZtWFhNmHWyCSKEpLC8pTHXFLp2ifCk/p2aUQDnlsFWU81S0XRFbQM1zBQHLBXH8m2wU70p8pXeKpmDg3JeKLfEtFVM8par18FvEUZ2Wb2fDcUVe5UYJ9kLgslVGDylouyK2ZdAUbpOC5g9bUkdx6qFXAeVfA1VYJrbEDJ6FYq5hbiJU6GnkH3KSqUX3f0kiWPlsFWWZ3AwpYgsdeu7XCVkHGhAatHLhvj4N1IxaqOPKxJa+XccXrNB8gXMWwzXhKfxyPWN7K0EnE7H9nnYTrNBcEW4kBmq2WjIALvTThrFxwTe8ErTCoq0oEVsVGCnO8DtCo/IExnvSTGSkGnj6YSsBADFbRflINu0Kn9yg3IiJUQc+ILso2EABehWAyigRW5jvMkeDcjiz2Mh+Tv1eqBbec7Jim9AMKXxyGXQ+zYazUlh73L6g4ZkMbBnZAjX2ArEN4zdRuCd4ARrDvQ86M7bJtF3x3p1gwLUaNrBKhTNSBekDwDGwgK1FA5klYgtjahpoXR/2ULRlDwwhgg/yVKYM2SrK5c7Ks5gtmFeMaZk2JU17Rd0Tbn7RQKoRCaBLylZH7yD9aP2xvxrWwrPQZcpWudrV888PmHIbg37OzkynFaLzJ1oxwjyDAbZeBEtMSdnaSJMLU9iE+ajwdi9fKlu2O+8Ayg+YcqtMh+H8BHXi4A60wIQuXWanogv/35KyVZARnBT8S0gJMC7o7fDNam91d9Zsd9R2xWxBODIpjmlF6fa0iAhkW8aLrGABLStbpLKRYKNDpATAnbSAb/t7tDpMthWuX5rUwhvQWKbWRWxDk46sbNFed4T4bFFvhiG7sLBeLz+4MVmxuWxBtAFuLRD5aOOGD7QKWdmiX+SCuBq8syVgCzu0l8N6cGspZsYJm5HWMibbUMGVlW0Hs/WXfmK28HYzc7a760Dr2PJiE0iX+knisg01RknZ4m8477G147F1Mmabje2CUVODmlNDbDku2yAzQVa2yFMZDEzlWGOyt6GLpDZH0eb2ruCoCq8uVNHT47INnAh/bLdkm5WvwK10NNAtT61PcdmSg2Srb8NWTh/fWraLyEoZhCWwrSVmG2hNsrJFsQQCtiCkrxdlK6dvfu1BUKVI8DG0mf8mtqTb7/rSRzGSLtsDi6nxGEW0IDg2/Sa2OXAGBvq/xzbtWLinTGPhPJmxwfcWyBP4VWxF4rJNcsLIHmJYfRpMcCBs9j+2bpFctqnGnidIQNmGrc3kCaCtV//Y5gK2UuaMbGDLVBul3f6xdYvkeq1Ty/U6TzHXS5QPFAjO9wljEv7YhkVy2UqZo/m+gW0Jq/Vop/NfxVZwbpzqbaEmZW61KP82FLTkx9vq/ia2RHQCZNdlm2Cjmez2RPg3Adv/jc1xS7sUR6Tcy0Sw3wWVFNgepq9AbE/mSNI9iFIwMEZFsE8NlTTYHpaPz/ffiv1AHJFy77CNR8+vYRvbf/s/881z5Gt3Atnt+cffFy4e27hxFyErWdlyY2q2YpvAgZvdXp1rQuE2so0dCxc0vKxs8S/Iplg4nmTFJ4HcrAuXcmUdW4QKxrBitvLHsHLjk/H5ZofH9m1jAOU6tsyKSRh7HkCUlS3W2IK8AlQmGHtul6Jb8iZw4GYl72td85vYwgTV3JqckaBdZGWL6hjmA6FZGOaMDPr9Yq/eqU7Gs3nT13tTNRamI5+b0K5li3cyAbleJeQ+MiTP9SrjPL7AioYSxKEDrKGqqzMf86bpGJofVy/ZycYruU3EFnnuUY4mbl7JczQHOP82CNLF5xKCDZphaG+QiS3dEakxzFJr2U5FudUVBL0oyK2mzZWYLTysaGu2KBOcbjCFc6tBzWFKefBRne+bZFR4B+DGZ1vBG0lRkyuCLtoTwUnEtsRXoXdhi9MnwuEEfT3w44G1C5KRExgvspJ1WQWb2eL2BVMSSksGe5mgRgTbYu7CtosX6QnY4n1qQq8A3gscvACmlActkiTSMSPZnB+4ji1eKAMkWH24CP6ND7MFzYVBxWKLP4ecE16we1ij4bM1KVsdjSakEC4b4FIRpEGh2oUTi3SHtr3zDpzfgi3OOwjPL8fNSA8AY8KdDZv/nFhsUa+C52vP0bOE+9TQhRyO5QTB9WiszoczDjKjh4NVapunpiV3G9GuZ4u36rSCeqIhGZygy/S1sEPPcfpCLLZ4s0UaE79gtvYT7Y0d7v3bwOF+YKZAv6BVRxs6ht+UdAfgPiRkq+PdBIjXXgvUc8A0bGOjPOm795eqTGRSLLaMQ52oroFEP2WyXMT7ORrz1XhiL9gtkakBykYzt+a/G+sARnBzgpO9spGN1uQNbLF+n1P7c71cnuOOAHfpYnLH1O6s2Zx02YSyeGyZsHhCTpvNcY191po9do3i5PS4YzJZMQ4o7hzreKeDclmfCfTqK9km3M1oN7CtsJ1BIxbePtmBx+Qy+4jniGMY+dXtBBrm47Fld+MgpmG4oAiylq3ZG5vkTXQ+kAsLFhc7qImj5fOag2tHC5SNf31n4Z5svBVb5SzSUZg/u/CkkUF073H/R3AP/XhsbYewjwnaG4ylwvlW8GN8Khz/vApQUuDXlGxQ3ui83cy2kRc0ki/WHN5t99h+4rfoDCoW8diyYfFhGSfwioAt6XHSxnNsADajm3HKDSPksgh52ln4Bxtvx3btATrfQ1wHO8P4p3usXEhAmYzJVrBFEinBtwjYGosZtyQWc2pbc23tDNQcw33zhBJjJbWZrTJeU32zy/g5bV43J1oJUY/JVunxttFZLWcrG9lqZZt3+A1aHLhyvCa7wKjieyWacePMtjHY2hNh9Z165CzNRXQGU8mK2GJ7tgN2cl+td1Y2CXAkCp/t6r/lyJo6pxYih5/aZ6Ipl0QaI0k2X8qy2SYVi62inFq8DpRTrSrncGhWAc2ZxNUogVswLlulyS7N8p65CZw4x2frGijKdVavNjgB5vaYf9ygY0YP3RylmKiVSDa7CVwx8yoVg8tWqZxprJpITK12wb15piEjtFX1+kqpqwY5NvBIoZKpguwbNmppqqFN9a2ebyXq5cN8nVz4JI3Ww3/OHBZbter8040bPYupHVEd65R3qPlQCrg3cdbIKzmD0mkK7mqMe45hqqp7srH6rWnWjheiU74XHcPxgOUNsxrQsjthxk0NONpLKPmmz3asxsQxPI6qY3TCnnRMs3dCh4Rep/Wo+nPF4Lhrrc4sVvOO0ZsKjyWvjGsWPbjZtEidc3CzK1/pZ35sL7HWUW6bYxHeVx40x2e9Wq1WrHfG00Fk4oKPbMw63UK3W6vOByB+Tg8FdgkdSeT99mB+1v9+Vr8za3CfRQvCrYa+OK32VqeoN3j9kN7WmFV7q91M+sX6uFIS3zvauyb0Emtf1yzFLkdCBXeXNJ+1Tuw473naq/GxvTna4k92l6un67SzLWOTPYm3QP6T3WV4//Od9+31Pu4a6k8SytXw4+Tu5f0t4z78eH37+nzyEVPr+ZP05Go0arWWy6+n+5PXu9uXz+v39tvjzc0uvL9/dfP41m63368/X27vXk/uny6Xy1ZrY/bAn/yUjFrL4XD49XV5eXnuycfDCVcePvwbzr/vvfz6/tVw2RqNRn8wf1D+A4wC+qRnkkaLAAAAAElFTkSuQmCC"/>
+                </a>
+                <br>
+                <br>
+                <div style="position: relative; padding-bottom: 56.25%;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?=get_text($view['wr_youtube_id']);?>?autoplay=1&playsinline=1'" frameborder="0" gesture="media" allow="autoplay;encrypted-media" ></iframe>
+                </div>
+                저작권에 의한 플레이 불가능 할 경우 Youtube 이동 
+                <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" ><?=get_text($view['wr_subject']);?> - <?=get_text($view['wr_artist']);?></a>       
+            </div>           
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>
-        <!-- } 본문 내용 끝 -->
+        <!-- } 본문 내용 끝 -->                  
         </div>    
         <?php if ($is_signature) { ?><p><?php echo $signature ?></p><?php } ?>
 
