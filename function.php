@@ -14,9 +14,21 @@ function adfitBanner($unit, $width, $height){
   // ,  'data-ad-width   = "728"'
   // ,  'data-ad-height  = "90"></ins>'
   //adfitBanner("DAN-1h7zrmefbegc0","728" ,"90")
-  $html = str_replace("[unit]",$unit,$html);
-  $html = str_replace("[width]",$width,$html);
-  $html = str_replace("[height]",$height,$html);
+  if(false){
+    $html = str_replace("[unit]",$unit,$html);
+    $html = str_replace("[width]",$width,$html);
+    $html = str_replace("[height]",$height,$html);
+  }
+  
+  return $html;
+}
+function displayFuriganaSongWithTranslate($furiganaText,$translateText){
+  $furigana = explode( "\n", $furiganaText);
+  $translate = explode( "\n",$translateText);
+  $html = "";
+  for ($i=0; $i<=count($translate); $i++) {               
+          $html.="$furigana[$i]<br>$translate[$i]<br><br>";            
+  }            
   return $html;
 }
 ?>

@@ -44,6 +44,8 @@
 #bo_list .bo_subject .fa-link{width:16px;height:16px;line-height:16px;background:#2aa974;color:#fff;text-align:center;font-size:10px;border-radius:2px}
 #bo_list .bo_subject .fa-heart{color:#ff0000;;text-align:center;font-size:10px;border-radius:2px}
 #bo_list .bo_subject .new_icon{display:inline-block;padding: 0 3px;line-height:16px ;font-size:0.833em;color:#fff;background:#c56bed}
+#bo_list .bo_subject .albumImag{width:40px;float:left;border-radius: 3px}
+#bo_list .bo_subject span{line-height: 40px;padding-left:10px;}
 #bo_list .bo_tit .fa-lock{color:#666}
 
 
@@ -184,6 +186,13 @@ box-shadow: 0 0 8px rgba(65,98,255,0.8);}
 #bo_v_img:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_v_img a.view_image{display:block}
 #bo_v_img img {margin-bottom:15px;max-width:100%;height:auto}
+#bo_v_song_meta img{width:250px;margin:0 auto;display: block}
+#bo_v_song_meta div.title{font-weight: bold;text-align: center;font-size:2em}
+#bo_v_furigana_song {padding:10px;font-size:1.3em;text-align: justify; white-space: pre-wrap; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
+#bo_v_furigana_song rt{color:red}
+#youtube_area img{max-width: 60px;}
+#youtube_area a{color:#4567b5}
+
 
 #bo_v_con {min-height:200px;margin-bottom:20px;width:100%;font-size:1.250em;line-height:1.7em;word-break:break-all;overflow:hidden}
 #bo_v_con a {color:#000;text-decoration:underline}
