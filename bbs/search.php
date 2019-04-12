@@ -22,7 +22,7 @@ if ($stx) {
 
     $g5_search['tables'] = Array();
     $g5_search['read_level'] = Array();
-    $sql = " select gr_id, bo_table, bo_read_level from {$g5['board_table']} where bo_use_search = 1 and bo_list_level <= '{$member['mb_level']}' ";
+    $sql = " select * from {$g5['board_table']} where bo_use_search = 1 and bo_list_level <= '{$member['mb_level']}' ";
     if ($gr_id)
         $sql .= " and gr_id = '{$gr_id}' ";
     $onetable = isset($onetable) ? $onetable : "";
@@ -30,6 +30,7 @@ if ($stx) {
         $sql .= " and bo_table = '{$onetable}' ";
     $sql .= " order by bo_order, gr_id, bo_table ";
     $result = sql_query($sql);
+    
     for ($i=0; $row=sql_fetch_array($result); $i++)
     {
         if ($is_admin != 'super')
@@ -50,10 +51,11 @@ if ($stx) {
                 }
             }
         }
+        $g5_search['tables']["row"][$row['bo_table']]= $row;
         $g5_search['tables'][] = $row['bo_table'];
         $g5_search['read_level'][] = $row['bo_read_level'];
-    }
-
+        
+    }    
     $op1 = '';
 
     // 검색어를 구분자로 나눈다. 여기서는 공백
@@ -85,6 +87,7 @@ if ($stx) {
 
         $op2 = '';
         // 필드의 수만큼 다중 필드 검색 가능 (필드1+필드2...)
+     
         for ($k=0; $k<count($field); $k++) {
             $str .= $op2;
             switch ($field[$k]) {
@@ -93,7 +96,7 @@ if ($stx) {
                 case 'wr_artist' :
                     $str .= "$field[$k] = '$s[$i]'";
                     break;
-                case 'wr_subject' :
+                case 'wr_subject' :               
                 case 'wr_content' :
                     if (preg_match("/[a-zA-Z]/", $search_str))
                         $str .= "INSTR(LOWER({$field[$k]}), LOWER('{$search_str}'))";
@@ -113,6 +116,7 @@ if ($stx) {
     $str .= ")";
 
     $sql_search = $str;
+  
 
     $str_board_list = "";
     $board_count = 0;
@@ -122,10 +126,15 @@ if ($stx) {
     $total_count = 0;
     for ($i=0; $i<count($g5_search['tables']); $i++) {
         $tmp_write_table   = $g5['write_prefix'] . $g5_search['tables'][$i];
-
+        $wriate_name = $g5_search['tables'][$i];
+        $boradInfo = $g5_search['tables']['row'][$wriate_name];
+       
+        $sql_search .= furiganaSearchString($boradInfo, $search_str);
         $sql = " select wr_id from {$tmp_write_table} where {$sql_search} ";
         $result = sql_query($sql, false);
-        $row['cnt'] = @sql_num_rows($result);
+        $row['cnt'] = @sql_num_rows($result);//code...
+    
+       
 
         $total_count += $row['cnt'];
         if ($row['cnt']) {
@@ -134,7 +143,7 @@ if ($stx) {
             $read_level[]   = $g5_search['read_level'][$i];
             $search_table_count[] = $total_count;
 
-            $sql2 = " select bo_subject, bo_mobile_subject from {$g5['board_table']} where bo_table = '{$g5_search['tables'][$i]}' ";
+            $sql2 = " select bo_subject, bo_mobile_subject from {$g5['board_table']} where bo_table = '{$g5_search['tables'][$i]}' ";           
             $row2 = sql_fetch($sql2);
             $sch_class = "";
             $sch_all = "";
@@ -143,7 +152,9 @@ if ($stx) {
             $str_board_list .= '<li><a href="'.$_SERVER['SCRIPT_NAME'].'?'.$search_query.'&amp;gr_id='.$gr_id.'&amp;onetable='.$g5_search['tables'][$i].'" '.$sch_class.'><strong>'.((G5_IS_MOBILE && $row2['bo_mobile_subject']) ? $row2['bo_mobile_subject'] : $row2['bo_subject']).'</strong><span class="cnt_cmt">'.$row['cnt'].'</span></a></li>';
         }
     }
-
+    
+  
+  
     $rows = $srows;
     $total_page = ceil($total_count / $rows);  // 전체 페이지 계산
     if ($page < 1) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
@@ -168,7 +179,7 @@ if ($stx) {
 
         $tmp_write_table = $g5['write_prefix'] . $search_table[$idx];
 
-        $sql = " select * from {$tmp_write_table} where {$sql_search} order by wr_id desc limit {$from_record}, {$rows} ";
+        $sql = " select * from {$tmp_write_table} where {$sql_search} order by wr_id desc limit {$from_record}, {$rows} ";        
         $result = sql_query($sql);
         for ($i=0; $row=sql_fetch_array($result); $i++) {
             // 검색어까지 링크되면 게시판 부하가 일어남
@@ -194,12 +205,21 @@ if ($stx) {
             if ($read_level[$idx] <= $member['mb_level'])
             {
                 //$content = cut_str(get_text(strip_tags($row['wr_content'])), 300, "…");
-                $content = strip_tags($row['wr_content']);
-                $content = get_text($content, 1);
-                $content = strip_tags($content);
-                $content = str_replace('&nbsp;', '', $content);
-                $content = cut_str($content, 300, "…");
 
+                
+                if(strpos($tmp_write_table,'furigana') !== false ){
+                    $content = displayFuriganaWithTranslateSearchResult($row['wr_content'],$row['wr_translate'], $stx);                    
+                    $content = get_text($content, 1);
+                    $content = strip_tags($content);
+                    $content = str_replace('&nbsp;', '', $content);
+                    $content = cut_str($content, 300, "…");
+                }else{
+                    $content = strip_tags($row['wr_content']);
+                    $content = get_text($content, 1);
+                    $content = strip_tags($content);
+                    $content = str_replace('&nbsp;', '', $content);
+                    $content = cut_str($content, 300, "…");
+                }
                 if (strstr($sfl, 'wr_content'))
                     $content = search_font($stx, $content);
             }

@@ -22,10 +22,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php if ($category_name) { ?>
             <span class="bo_v_cate"><?php echo $view['ca_name']; // 분류 출력 끝 ?></span> 
             <?php } ?>
-            <span class="bo_v_tit">
-            <?php
-            echo $view['wr_subject']; // 글제목 출력
-            ?></span>
+            <span class="bo_v_tit furigana">
+            <?=$view['wr_8'] // 글제목 출력?>
+            <br>
+            <?=$view['wr_9']?>
+           
+            </span>
         </h2>
         
     </header>    
@@ -78,9 +80,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <div id="bo_v_news_meta">  
             
                           
-                <!-- <?php if ( onePixcelImageCheck($view['wr_1']) == true) {?> -->
+                <?php if ( onePixcelImageCheck($view['wr_1']) == true) {?>
                             <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
-                <!-- <?php } ?> -->
+                <?php } ?>
                 <br>
                 
             </div>

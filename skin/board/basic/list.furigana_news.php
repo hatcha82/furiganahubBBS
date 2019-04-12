@@ -97,10 +97,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 echo "<img style='width:50px' src='$publisher_img'/>";
              ?>
             </td>
-            <td class="td_album">              
+            <td class="td_news_thumb">                          
                 <img src="<?=$list[$i]['wr_1']?>"/>              
             </td>    
-
             <td class="td_subject" style="padding-left:<?php echo $list[$i]['reply'] ? (strlen($list[$i]['wr_reply'])*10) : '0'; ?>px">
                 <?php
                 if ($is_category && $list[$i]['ca_name']) {
@@ -114,7 +113,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         <?php
                             if (isset($list[$i]['icon_secret'])) echo rtrim($list[$i]['icon_secret']);
                          ?>                                           
-                        <?php echo $list[$i]['wr_8']  ?>                     
+                        <?php echo "<span class='furigana'>" . $list[$i]['wr_8'] ."</span>" ?>                     
                         <br>
                         <?php echo $list[$i]['wr_9']  ?>    
                     </a>

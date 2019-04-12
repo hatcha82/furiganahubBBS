@@ -175,7 +175,18 @@ $sql_common .= " bo_insert_content   = '{$_POST['bo_insert_content']}',
                 bo_7                = '{$_POST['bo_7']}',
                 bo_8                = '{$_POST['bo_8']}',
                 bo_9                = '{$_POST['bo_9']}',
-                bo_10               = '{$_POST['bo_10']}' ";
+                bo_10               = '{$_POST['bo_10']}', 
+                bo_1_search_flag    = '{$_POST['bo_1_search_flag']}',
+                bo_2_search_flag    = '{$_POST['bo_2_search_flag']}',
+                bo_3_search_flag    = '{$_POST['bo_3_search_flag']}',
+                bo_4_search_flag    = '{$_POST['bo_4_search_flag']}',
+                bo_5_search_flag    = '{$_POST['bo_5_search_flag']}',
+                bo_6_search_flag    = '{$_POST['bo_6_search_flag']}',
+                bo_7_search_flag    = '{$_POST['bo_7_search_flag']}',
+                bo_8_search_flag    = '{$_POST['bo_8_search_flag']}',
+                bo_9_search_flag    = '{$_POST['bo_9_search_flag']}',
+                bo_10_search_flag   = '{$_POST['bo_10_search_flag']}'
+                ";
 
 if ($w == '') {
 
@@ -435,7 +446,7 @@ for ($i=1; $i<=10; $i++) {
     }
 }
 
-if ($all_fields) {
+if ($all_fields) { 
     sql_query(" update {$g5['board_table']} set bo_table = bo_table {$all_fields} ");
 }
 

@@ -180,7 +180,7 @@ $pg_anchor = '<ul class="anchor">
         <tbody>
         <tr>
             <th scope="row"><label for="bo_table">TABLE<?php echo $sound_only ?></label></th>
-            <td colspan="2">
+            <td colspan="2">               
                 <input type="text" name="bo_table" value="<?php echo $board['bo_table'] ?>" id="bo_table" <?php echo $required ?> <?php echo $readonly ?> class="frm_input <?php echo $reaonly ?> <?php echo $required ?> <?php echo $required_valid ?>" maxlength="20">
                 <?php if ($w == '') { ?>
                     영문자, 숫자, _ 만 가능 (공백없이 20자 이내)
@@ -1232,6 +1232,8 @@ $pg_anchor = '<ul class="anchor">
         <colgroup>
             <col class="grid_4">
             <col>
+            <col>
+            <col>
             <col class="grid_3">
         </colgroup>
         <tbody>
@@ -1241,8 +1243,12 @@ $pg_anchor = '<ul class="anchor">
             <td class="td_extra">
                 <label for="bo_<?php echo $i ?>_subj">여분필드 <?php echo $i ?> 제목</label>
                 <input type="text" name="bo_<?php echo $i ?>_subj" id="bo_<?php echo $i ?>_subj" value="<?php echo get_text($board['bo_'.$i.'_subj']) ?>" class="frm_input">
-                <label for="bo_<?php echo $i ?>">여분필드 <?php echo $i ?> 값</label>
+                <label for="bo_<?php echo $i ?>">여분필드 <?php echo $i ?> 값</label>                
                 <input type="text" name="bo_<?php echo $i ?>" value="<?php echo get_text($board['bo_'.$i]) ?>" id="bo_<?php echo $i ?>" class="frm_input extra-value-input">
+            </td>
+            <th scope="row">검색 허용 <?php echo $i ?></th>
+            <td>                
+                <input maxlength="1" type="text" name="bo_<?php echo $i ?>_search_flag" id="bo_<?php echo $i ?>_search_flag" value="<?php echo get_text($board['bo_'.$i.'_search_flag']) ?>" class="frm_input">
             </td>
             <td class="td_grpset">
                 <input type="checkbox" name="chk_grp_<?php echo $i ?>" value="1" id="chk_grp_<?php echo $i ?>">
