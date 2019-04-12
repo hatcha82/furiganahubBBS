@@ -74,7 +74,7 @@ border: 1px solid #558ab7 !important;
 #hd_wrapper:after {display:block;visibility:hidden;clear:both;content:""}
 
 #logo {float:left;padding:30px 0 0}
-#logo img{width:40px; border-radius: 5px;margin:0 auto;display: block}
+#logo img{width:50px; border-radius: 5px;margin:0 auto;display: block}
 #logo h1{font-size: 19px;color:#888}
 
 .hd_sch_wr{position:absolute;top:25px;left:50%;width:430px;margin-left:-215px;}
@@ -177,10 +177,10 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 #wrapper{}
 #container_wr:after {display:block;visibility:hidden;clear:both;content:""}
 #container_wr {z-index:5;margin:0 auto;height:100%;zoom:1}
-#aside {float:right;width:355px;padding:0;background: #e7ebf3;height: 100%;border: 1px solid #adbfd2;margin:20px 0 0px 0px}
-#aside2 {position: absolute;margin-left:-180px;margin-top:20px;padding:10px;background: #e7ebf3;border: 1px solid #adbfd2;}
+#aside {float:right;width:345px;padding-bottom:20px;background: #e7ebf3;height: 100%;border: 1px solid #adbfd2;margin:20px 0 0px 0px}
+#aside2 {position: absolute;margin-left:-200px;margin-top:20px;padding:10px;background: #e7ebf3;border: 1px solid #adbfd2;}
 
-#container {padding:0 10px;z-index:4;position:relative;float:left;min-height:500px;height:auto !important;margin:20px  0;height:500px;font-size:1em;width:845px;zoom:1}
+#container {padding:20px;z-index:4;position:relative;float:left;min-height:500px;height:auto !important;margin:20px  0;height:500px;font-size:1em;width:845px;zoom:1;background: #fff;border: 1px solid #adbfd2;}
 #container:after {display:block;visibility:hidden;clear:both;content:""}
 #container_title {font-size:1.333em;margin:0 auto;font-weight:bold;}
 #container_title span{margin:0 auto 10px;display:block;line-height:30px;}
@@ -199,8 +199,8 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 #ft_catch{margin:20px 0 10px}
 #ft_catch img{width:30px;border-radius: 5px}
 #ft_copy{color:#aaa;font-size:0.92em}
-#top_btn {position:fixed;bottom:20px;right:20px;width:50px;height:50px;line-height:46px;border:2px solid #333;color:#333;text-align:center;font-size:15px;z-index:90;background:rgba(255,255,255,0.5)}
-#top_btn:hover{border-color:#3059c7;background:#3059c7;color:#fff}
+#top_btn {border-radius:25px;position:fixed;bottom:20px;right:20px;width:50px;height:50px;line-height:46px;border:2px solid #fff;color:#fff;text-align:center;font-size:15px;z-index:90;background:#63b2ff}
+#top_btn:hover{border-color:#eee;background:#63b2ff;color:#fff}
 
 /* 게시물 선택복사 선택이동 */
 #copymove {}

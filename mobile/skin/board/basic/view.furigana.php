@@ -25,8 +25,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             echo cut_str(get_text($view['wr_subject']) , 70); // 글제목 출력
             ?></span>
             <span class="bo_v_tit">
-            <?= cut_str(get_text($view['wr_artist']) , 70); ?>
-            
+            <?= cut_str(get_text($view['wr_artist']) , 70); ?>            
             </span
         </h2>
         <p><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></p>
@@ -99,10 +98,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </div>
             저작권에 의한 플레이 불가능 할 경우 Youtube 이동 
             <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" ><?=get_text($view['wr_subject']);?> - <?=get_text($view['wr_artist']);?></a>       
-        </div> 
+        </div>         
         <!-- <div id="bo_v_con"><?php echo get_view_thumbnail($view['content']); ?></div> -->
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>
-
+        
+        <?=adfitBanner("DAN-1iaxnjnjggk12","320" ,"100")?>
+        <br>
+        <br>
+        
         <?php if ($is_signature) { ?><p><?php echo $signature ?></p><?php } ?>
 
         <?php if ( $good_href || $nogood_href) { ?>

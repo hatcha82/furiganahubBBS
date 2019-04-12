@@ -169,7 +169,8 @@ if ($sst) {
 if ($is_search_bbs) {
     $sql = " select distinct wr_parent from {$write_table} where {$sql_search} {$sql_order} limit {$from_record}, $page_rows ";
 } else {
-    $sql = " select * from {$write_table} where wr_is_comment = 0 ";
+    $sql = " select wr_id, wr_num, wr_reply, wr_parent, wr_is_comment, wr_comment, wr_comment_reply, ca_name, wr_option, wr_subject, wr_link1, wr_link2, wr_link1_hit, wr_link2_hit, wr_hit, wr_good, wr_nogood, mb_id, wr_password, wr_name, wr_email, wr_homepage, wr_datetime, wr_file, wr_last, wr_ip, wr_facebook_user, wr_twitter_user, wr_1, wr_2, wr_3, wr_4, wr_5, wr_6, wr_7, wr_8, wr_9, wr_10 
+    from {$write_table} where wr_is_comment = 0 ";
     if(!empty($notice_array))
         $sql .= " and wr_id not in (".implode(', ', $notice_array).") ";
     $sql .= " {$sql_order} limit {$from_record}, $page_rows ";
@@ -246,7 +247,8 @@ if ($board['bo_use_rss_view']) {
 
 $stx = get_text(stripslashes($stx));
 if(strpos($write_table,'furigana') !== false ){
-    include_once($board_skin_path.'/list.furigana.php');
+    $view_skin_name =$board['bo_table'];
+    include_once($board_skin_path."/list.$view_skin_name.php");
 }else{
     include_once($board_skin_path.'/list.skin.php');
 }

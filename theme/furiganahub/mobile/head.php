@@ -31,6 +31,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
         <button type="button" id="gnb_open" class="hd_opener"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only"> 메뉴열기</span></button>
 
         <div id="gnb" class="hd_div">
+            <div> <a href="<?php echo G5_URL ?>"><img style="position:absolute;width:50px;" src="<?php echo G5_IMG_URL ?>/logo.jpg" alt="<?php echo $config['cf_title']; ?>"></div>
             <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only">메뉴 </span>닫기</button>
 
             <ul id="gnb_1dul">
@@ -112,6 +113,9 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 }
                 </script>
             </div>
+            <div class="">
+                <?=adfitBanner("DAN-1iut7aq2ij6es","250" ,"250")?>
+            </div>
         </div>
 
         <button type="button" id="user_btn" class="hd_opener"><i class="fa fa-user" aria-hidden="true"></i><span class="sound_only">사용자메뉴</span></button>
@@ -191,4 +195,11 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <div id="wrapper">
 
     <div id="container">
-    <?php if (!defined("_INDEX_")) { ?><h2 id="container_title" class="top" title="<?php echo get_text($g5['title']); ?>"><?php echo get_head_title($g5['title']); ?></h2><?php } ?>
+    <?php if (!defined("_INDEX_")) { ?>
+        <h2 id="container_title" class="top" title="<?php echo get_text($g5['title']); ?>"><?php echo get_head_title($g5['title']); ?></h2>        
+    <?php } ?>
+    <div class="pannel">
+        <?=adfitBanner("DAN-u7okrwjk2eeb","320" ,"100")?>
+    </div>
+    
+    

@@ -83,7 +83,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </div>
 
             
-            <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
+            <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
             
             <div id="youtube_area"style="width:480px;margin:10px;margin-bottom:20px;">
                 <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" > 
@@ -95,7 +95,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 </div>
                 저작권에 의한 플레이 불가능 할 경우 Youtube 이동 
                 <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" ><?=get_text($view['wr_subject']);?> - <?=get_text($view['wr_artist']);?></a>       
-            </div>           
+            </div> 
+                
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>
         <!-- } 본문 내용 끝 -->                  
         </div>    

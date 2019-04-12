@@ -6,7 +6,9 @@ if (G5_IS_MOBILE) {
     return;
 }
 ?>
-
+    <div style="width:845px;float:left"> 
+        <?=adfitBanner("DAN-t4w6dr2ubfat","728" ,"100")?>          
+    </div>
     </div>
     <div id="aside2">
     <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>            
@@ -22,14 +24,15 @@ if (G5_IS_MOBILE) {
         echo latest('theme/notice', 'notice', 4, 13);
         ?>
         <?php echo outlogin('theme/basic'); // 외부 로그인, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
+        <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
+        <div style="margin-top:20px;">
+        <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>    
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         <?php echo visit('theme/basic'); // 접속자집계, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
-        <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
-        <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>    
+        
+        </div>
     </div>
-    <div style="width:845px;float:left"> 
-        <?=adfitBanner("DAN-t4w6dr2ubfat","728" ,"100")?>          
-    </div>
+    
 </div>
 
 </div>

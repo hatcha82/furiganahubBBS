@@ -3,10 +3,15 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 ?>
     </div>
 </div>
-
+<div class="pannel">
+    <?=adfitBanner("DAN-1jy8947361j6s","300" ,"250")?>   
+</div>
 
 <?php echo poll('theme/basic'); // 설문조사 ?>
 <?php echo popular('theme/basic'); // 인기검색어 ?>
+<div class="pannel">
+    <?=adfitBanner("DAN-1h84t5wt7s2ue","320" ,"100")?>
+</div>
 <?php echo visit('theme/basic'); // 방문자수 ?>
 
 

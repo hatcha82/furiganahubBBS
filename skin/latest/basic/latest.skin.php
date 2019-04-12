@@ -23,7 +23,7 @@ add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
             if ($list[$i]['is_notice'])
                 echo "<strong>".$list[$i]['subject']."</strong>";
             else
-                echo $list[$i]['subject'];
+                echo  $list[$i]['subject'];
 
 
 

@@ -5,6 +5,7 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
 ?>
 
 <!-- 메인화면 최신글 시작 -->
+
 <?php
 //  최신글
 $sql = " select bo_table
@@ -23,6 +24,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
     echo latest('theme/basic', $row['bo_table'], 5, 25);
 }
 ?>
+
 <!-- 메인화면 최신글 끝 -->
 
 <?php
