@@ -18,7 +18,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
                 $subject = "<strong>".$list[$i]['subject']."</strong>";                
             }else if ($bo_table == 'furigana_song'){
                 $imageUrl = $list[$i]['wr_2'];                
-                $subject_title=  "[" . $list[$i]['wr_artist'] . "] " . $list[$i]['wr_subject'];
+                $subject_title=  "[" . $list[$i]['wr_3'] . "] " . $list[$i]['wr_subject'];
                 $subject = "<img class='albumImage'src='$imageUrl'/>" . $subject_title;
             }            
             else{                

@@ -208,18 +208,15 @@ if ($stx) {
 
                 
                 if(strpos($tmp_write_table,'furigana') !== false ){
-                    $content = displayFuriganaWithTranslateSearchResult($row['wr_content'],$row['wr_translate'], $stx);                    
-                    $content = get_text($content, 1);
-                    $content = strip_tags($content);
-                    $content = str_replace('&nbsp;', '', $content);
-                    $content = cut_str($content, 300, "…");
+                    $content = displayFuriganaWithTranslateSearchResult($row['wr_content'],$row['wr_translate'], $stx);                                        
                 }else{
                     $content = strip_tags($row['wr_content']);
-                    $content = get_text($content, 1);
-                    $content = strip_tags($content);
-                    $content = str_replace('&nbsp;', '', $content);
-                    $content = cut_str($content, 300, "…");
+                   
                 }
+                $content = get_text($content, 1);
+                $content = strip_tags($content);
+                $content = str_replace('&nbsp;', '', $content);
+                $content = cut_str($content, 300, "…");
                 if (strstr($sfl, 'wr_content'))
                     $content = search_font($stx, $content);
             }
