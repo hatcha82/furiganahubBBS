@@ -1,7 +1,9 @@
 <?php
-function onePixcelImageCheck($url){
+function displayNewsImage($url){
   $image_info = @getimagesize($url);
-  if(is_array($image_info) && $image_info[0] == 1){
+  //var_dump($image_info);
+  
+  if($image_info){
     return true;
   }else{
     return false;

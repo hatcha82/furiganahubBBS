@@ -80,10 +80,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <div id="bo_v_news_meta">  
             
                           
-                <?php if ( onePixcelImageCheck($view['wr_1']) == true) {?>
-                    <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
+                <?php if ( displayNewsImage($view['wr_1']) == true) {?>
+                    <img style="width:250px;margin:0 auto" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
                 <?php } ?>
-                <br>
                 
             </div>
 
