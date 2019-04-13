@@ -75,8 +75,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         <?php echo $list[$i]['icon_reply']; ?>
                         <?php if ($list[$i]['is_notice']) { ?><strong class="notice_icon"><i class="fa fa-volume-up" aria-hidden="true"></i>공지</strong><?php } ?> 
                         
-                        <img  class="albumImag" src="<?php echo $list[$i]['wr_2']?>"/>
-                        <span><?php echo $list[$i]['wr_subject']?></span>
+                        <img style="float:left;margin-right:10px;" src="<?=$list[$i]['wr_1']?>"/>  
+                        <p>   
+                        
+                        <?php echo "<span class='furigana'>" . $list[$i]['wr_8'] ."</span>" ?>  
+                        <br>
+                        
+                        </p>
+                        <?php echo "<span class='translate'>" . $list[$i]['wr_9'] . "</span>" ?>                    
                         <div style="clear:both">
                         <?php
                         // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
@@ -86,18 +92,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         if (isset($list[$i]['icon_file'])) echo $list[$i]['icon_file'];
                         if (isset($list[$i]['icon_link'])) echo $list[$i]['icon_link'];
                         if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret'];
-
+                        $publisher_img = $list[$i]['wr_3'];
+                        echo "<img style='width:50px' src='$publisher_img'/>";
                         ?>
                         
                     </a>
 
                 </div>
-                <div class="bo_info">
-                    <span class="sound_only">작성자</span><?php echo $list[$i]['wr_artist'] ?>
-                    
-
-                    <span class="bo_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['datetime2'] ?></span>
-                
+                <div class="bo_info" style="margin-top:10px;">
+                    <span class="sound_only">작성자</span><?php echo $list[$i]['newsPublisher'] ?>
+                    <span id="news_date" class="bo_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['wr_datetime'] ?></span>
                 </div>
                 
             </li><?php } ?>

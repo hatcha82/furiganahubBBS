@@ -44,8 +44,12 @@
 #bo_list .bo_subject .fa-link{width:16px;height:16px;line-height:16px;background:#2aa974;color:#fff;text-align:center;font-size:10px;border-radius:2px}
 #bo_list .bo_subject .fa-heart{color:#ff0000;;text-align:center;font-size:10px;border-radius:2px}
 #bo_list .bo_subject .new_icon{display:inline-block;padding: 0 3px;line-height:16px ;font-size:0.833em;color:#fff;background:#c56bed}
-#bo_list .bo_subject .albumImag{width:40px;float:left;border-radius: 3px}
-#bo_list .bo_subject span{line-height: 40px;padding-left:10px;}
+#bo_list .bo_subject .albumImag{width:40px;float:left;border-radius: 3px;margin-right: 10px;}
+#bo_list .bo_subject span{line-height: 40px;padding-left:0px;}
+#bo_list .bo_subject span.furigana{line-height: 30px;}
+#bo_list .bo_subject span.furigana rt{color:red}
+#bo_list .bo_subject span.translate{color:#444;line-height: 20px;}
+#bo_list .bo_subject image{margin-right:10px;}
 #bo_list .bo_tit .fa-lock{color:#666}
 
 
@@ -86,7 +90,7 @@ box-shadow: 0 0 8px  rgba(65,98,255,0.8);}
 .bo_notice td {background:#f7f7f7}
 .bo_notice td a {font-weight:bold}
 .td_num strong {color:#000}
-.bo_cate_link {;color:#3ca1ff !important;font-weight:normal;text-decoration:none;font-size:0.92em} /* 글제목줄 분류스타일 */
+.bo_cate_link {color:#3ca1ff !important;font-weight:normal;text-decoration:none;font-size:0.92em} /* 글제목줄 분류스타일 */
 .bo_subject{display:block;font-size:1.083em;font-weight:bold;margin:5px 0}
 .bo_subject i{color: #8d96c2;font-size:12px}
 .bo_subject  .fa-heart{color:#ff0000}
@@ -96,7 +100,8 @@ box-shadow: 0 0 8px  rgba(65,98,255,0.8);}
 .bo_info .bo_date{position:absolute;top:10px;right:0;font-style: italic;}
 .bo_info .cnt_cmt {display:inline-block;margin: 0 5px 0 3px;}
 .bo_info .profile_img img{border-radius:50%;vertical-align:top}
-
+#news_date{top:-10px;}
+/* #song_date{top:-10px;} */
 #bo_sch {background:#fff;border:1px solid #bdc2d8;position:relative;margin:10px;border-radius:3px}
 #bo_sch:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_sch legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden}
@@ -176,8 +181,8 @@ box-shadow: 0 0 8px rgba(65,98,255,0.8);}
 .bo_v_nb:after {display:block;visibility:hidden;clear:both;content:""}
 .bo_v_nb li {}
 .bo_v_nb li a{display:inline-block;padding:10px;color:#777}
-.bo_v_nb .bo_v_next{;position:absolute;top:0;right:0;}
-.bo_v_nb .bo_v_prev{;position:absolute;top:0;left:0;}
+.bo_v_nb .bo_v_next{position:absolute;top:0;right:0;}
+.bo_v_nb .bo_v_prev{position:absolute;top:0;left:0;}
 
 #bo_v_atc {min-height:200px}
 #bo_v_atc_title {margin:0;padding:0;height:0;overflow:hidden}
@@ -186,11 +191,12 @@ box-shadow: 0 0 8px rgba(65,98,255,0.8);}
 #bo_v_img:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_v_img a.view_image{display:block}
 #bo_v_img img {margin-bottom:15px;max-width:100%;height:auto}
+#bo_v_news_meta{text-align: center}
 #bo_v_song_meta img{width:250px;margin:0 auto;display: block}
 #bo_v_song_meta div.title{font-weight: bold;text-align: center;font-size:2em}
 #bo_v_furigana_song {padding:10px;font-size:1.3em;text-align: justify; white-space: pre-wrap; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
 #bo_v_furigana_song rt{color:red}
-#youtube_area img{max-width: 60px;}
+#youtube_area img{max-width: 60px;margin-right: }
 #youtube_area a{color:#4567b5}
 
 

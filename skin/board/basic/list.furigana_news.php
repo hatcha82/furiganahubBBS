@@ -67,7 +67,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </th>
             <?php } ?>
             <th scope="col">출처</th>
-            <th scope="col"></th>
             <th scope="col">제목</th>
             <th scope="col"><?php echo subject_sort_link('wr_hit', $qstr2, 1) ?>조회 <i class="fa fa-sort" aria-hidden="true"></i></a></th>
             <?php if ($is_good) { ?><th scope="col"><?php echo subject_sort_link('wr_good', $qstr2, 1) ?>추천 <i class="fa fa-sort" aria-hidden="true"></i></a></th><?php } ?>
@@ -97,9 +96,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 echo "<img style='width:50px' src='$publisher_img'/>";
              ?>
             </td>
-            <td class="td_news_thumb">                          
-                <img src="<?=$list[$i]['wr_1']?>"/>              
-            </td>    
+            
             <td class="td_subject" style="padding-left:<?php echo $list[$i]['reply'] ? (strlen($list[$i]['wr_reply'])*10) : '0'; ?>px">
                 <?php
                 if ($is_category && $list[$i]['ca_name']) {
@@ -107,7 +104,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <a href="<?php echo $list[$i]['ca_name_href'] ?>" class="bo_cate_link"><?php echo $list[$i]['ca_name'] ?></a>
                 <?php } ?>
                 <div class="bo_tit">
-                    
+                    <img style="float:left;margin-right:10px;" src="<?=$list[$i]['wr_1']?>"/>              
                     <a href="<?php echo $list[$i]['href'] ?>">
                         <?php echo $list[$i]['icon_reply'] ?>
                         <?php

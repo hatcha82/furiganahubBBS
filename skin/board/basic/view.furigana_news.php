@@ -81,7 +81,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             
                           
                 <?php if ( onePixcelImageCheck($view['wr_1']) == true) {?>
-                            <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
+                    <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
                 <?php } ?>
                 <br>
                 
