@@ -29,7 +29,6 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
             $latest_skin_url  = G5_SKIN_URL.'/latest/'.$skin_dir;
         }
     }
-
     $cache_fwrite = false;
     if(G5_USE_CACHE) {
         $cache_file = G5_DATA_PATH."/cache/latest-{$bo_table}-{$skin_dir}-{$rows}-{$subject_len}-serial.php";
