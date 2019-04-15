@@ -104,6 +104,7 @@ function latest($skin_dir='', $bo_table, $rows=10, $subject_len=40, $cache_time=
     $pos =  strpos($bo_table , 'furigana');	
     if ($pos !== false){		
         include $latest_skin_path."/latest.skin.$bo_table.php";
+        
     }else{
         include $latest_skin_path.'/latest.skin.php';
     }
