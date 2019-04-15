@@ -51,7 +51,8 @@ if ($stx) {
                 }
             }
         }
-        $g5_search['tables']["row"][$row['bo_table']]= $row;
+        
+        $g5_search['tablesInfo'][$row['bo_table']]= $row;
         $g5_search['tables'][] = $row['bo_table'];
         $g5_search['read_level'][] = $row['bo_read_level'];
         
@@ -125,13 +126,15 @@ if ($stx) {
 
     $total_count = 0;
     for ($i=0; $i<count($g5_search['tables']); $i++) {
+        $sql_search  = $str;
         $tmp_write_table   = $g5['write_prefix'] . $g5_search['tables'][$i];
         $wriate_name = $g5_search['tables'][$i];
-        $boradInfo = $g5_search['tables']['row'][$wriate_name];
-       
-        $sql_search .= furiganaSearchString($boradInfo, $search_str);
-        $sql = " select wr_id from {$tmp_write_table} where {$sql_search} ";
-        $result = sql_query($sql, false);
+        
+        $boradInfo = $g5_search['tablesInfo'][$wriate_name];
+        $additional_condition = furiganaSearchString($boradInfo, $search_str);
+        $sql_search =  "$sql_search $additional_condition";
+        $sql = " select wr_id from {$tmp_write_table} where {$sql_search}";
+        $result = sql_query($sql , false);
         $row['cnt'] = @sql_num_rows($result);//code...
     
        
@@ -178,8 +181,11 @@ if ($stx) {
         $bo_subject[$idx] = ((G5_IS_MOBILE && $row['bo_mobile_subject']) ? $row['bo_mobile_subject'] : $row['bo_subject']);
 
         $tmp_write_table = $g5['write_prefix'] . $search_table[$idx];
-
-        $sql = " select * from {$tmp_write_table} where {$sql_search} order by wr_id desc limit {$from_record}, {$rows} ";        
+        $boradInfo = $g5_search['tablesInfo'][$search_table[$idx]];
+        $additional_condition = furiganaSearchString($boradInfo, $search_str);
+        $sql_search .= $additional_condition;
+        $sql = " select * from {$tmp_write_table} where {$sql_search} order by wr_id desc limit {$from_record}, {$rows} ";    
+           
         $result = sql_query($sql);
         for ($i=0; $row=sql_fetch_array($result); $i++) {
             // 검색어까지 링크되면 게시판 부하가 일어남

@@ -62,6 +62,7 @@ function displayFuriganaSongWithTranslate($furiganaText,$translateText){
   return $html;
 }
 function furiganaSearchString($boradInfo, $searchStr){
+  
   $sql_search =" ";
   for ($i=1; $i<=10; $i++) {
     $bo_search_flag = "bo_". $i ."_search_flag";    
@@ -69,6 +70,7 @@ function furiganaSearchString($boradInfo, $searchStr){
       $sql_search .= "or INSTR(LOWER(wr_$i) , '{$searchStr}')";
     }
   } 
+  
   return $sql_search;
 }
 function debugToWeb($var){

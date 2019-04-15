@@ -86,7 +86,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         </div>
 
         
-        <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
+        <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>        
         
         <div id="youtube_area"style="width:320px;margin:00px auto;margin-bottom:20px;">
             <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" > 
