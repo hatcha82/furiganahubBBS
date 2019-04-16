@@ -9,11 +9,7 @@
   ,ca_name
   ,wr_option
   ,wr_subject
-  ,wr_subject_furigana
-  ,wr_subject_translate
   ,wr_content
-  ,wr_furigana
-  ,wr_translate
   ,wr_link1
   ,wr_link2
   ,wr_link1_hit
@@ -52,12 +48,8 @@ SELECT  a.id                      wr_id,
         ''                        wr_comment_reply, 
         ''                        ca_name, 
         'html2'                   wr_option, 
-        a.title                   wr_subject, 
-        ''                        wr_subject_furigana, 
-        ''                        wr_subject_translate, 
+        a.title                   wr_subject,         
         a.article                 wr_content, 
-        a.furigana                wr_furigana, 
-        a.translateText           wr_translate, 
         a.newsUrl                 wr_link1, 
         ''                        wr_link2, 
         0                         wr_link1_hit, 
@@ -82,11 +74,13 @@ SELECT  a.id                      wr_id,
         a.newsPublishedDate       wr_4,  -- newsPublishedDate
         a.naverBlogUpload         wr_5,  -- naverBlogUpload
         case when a.naverBlogRefNo is null then '' else  a.naverBlogRefNo end       
-                                  wr_6,  -- naverBlogRefNo
-        ''                        wr_7,         
-        a.titleFurigana           wr_8,
-        a.titleTranslate          wr_9,
-        ''                        wr_10 
+                                  wr_6,  -- naverBlogRefNo               
+        a.titleFurigana           wr_7, -- subject_furigana
+        a.titleTranslate          wr_8, -- subject_translate
+        case when a.furigana is null then '' else  a.furigana end                    
+                                  wr_9 , -- furigana
+        case when a.translateText is null then '' else  a.translateText end                        
+                                  wr_10 -- translate
 FROM   jpn_tuto.Articles          a
 order   
 by      a.updatedAt                 desc

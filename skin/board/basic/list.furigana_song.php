@@ -127,7 +127,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 </div>
 
             </td>
-            <td class="td_artist sv_use"><?php echo $list[$i]['wr_artist'] ?></td>
+            <td class="td_artist sv_use"><?php echo $list[$i]['wr_3'] ?></td>
             <td class="td_num"><?php echo $list[$i]['wr_hit'] ?></td>
             <?php if ($is_good) { ?><td class="td_num"><?php echo $list[$i]['wr_good'] ?></td><?php } ?>
             <?php if ($is_nogood) { ?><td class="td_num"><?php echo $list[$i]['wr_nogood'] ?></td><?php } ?>

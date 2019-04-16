@@ -23,9 +23,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <span class="bo_v_cate"><?php echo $view['ca_name']; // 분류 출력 끝 ?></span> 
             <?php } ?>
             <span class="bo_v_tit furigana">
-            <?=$view['wr_8'] // 글제목 출력?>
+            <?=$view['wr_7'] // 글제목 출력?>
             <br>
-            <?=$view['wr_9']?>
+            <?=$view['wr_8']?>
            
             </span>
         </h2>
@@ -87,7 +87,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </div>
 
             
-            <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
+            <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>        
             
             
                 

@@ -21,11 +21,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <span class="bo_v_cate"><?php echo $view['ca_name']; // 분류 출력 끝 ?></span> 
             <?php } ?>
             <span class="bo_v_tit">
-            <?php
-            echo cut_str(get_text($view['wr_subject']) , 70); // 글제목 출력
-            ?></span>
+            <?php echo displayFuriganaSongWithTranslate($view['wr_7'],$view['wr_8']);?>
+            </span>
             <span class="bo_v_tit">
-            <?= cut_str(get_text($view['wr_artist']) , 70); ?>            
             </span
         </h2>
         <p><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></p>
@@ -85,7 +83,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         </div>
 
         
-        <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_furigana'],$view['wr_translate']);?></div>        
+        <div id="bo_v_furigana_song"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>        
         
         <!-- <div id="bo_v_con"><?php echo get_view_thumbnail($view['content']); ?></div> -->
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>

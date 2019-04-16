@@ -104,15 +104,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <a href="<?php echo $list[$i]['ca_name_href'] ?>" class="bo_cate_link"><?php echo $list[$i]['ca_name'] ?></a>
                 <?php } ?>
                 <div class="bo_tit">
-                    <img style="float:left;margin-right:10px;" src="<?=$list[$i]['wr_1']?>"/>              
+                    <img style="float:left;margin-right:10px;max-width:100px;" src="<?=$list[$i]['wr_1']?>"/>              
                     <a href="<?php echo $list[$i]['href'] ?>">
                         <?php echo $list[$i]['icon_reply'] ?>
                         <?php
                             if (isset($list[$i]['icon_secret'])) echo rtrim($list[$i]['icon_secret']);
                          ?>                                           
-                        <?php echo "<span class='furigana'>" . $list[$i]['wr_8'] ."</span>" ?>                     
+                        <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>                     
                         <br>
-                        <?php echo $list[$i]['wr_9']  ?>    
+                        <?php echo $list[$i]['wr_8']  ?>    
                     </a>
                     <?php
                     // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
