@@ -80,7 +80,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                
                 <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_2']); ?>"/>              
                 <br>
-                
+                <?php include_once(G5_PATH.'/component/tts.php');?>       
             </div>
 
             

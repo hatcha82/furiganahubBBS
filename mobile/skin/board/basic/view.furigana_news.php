@@ -80,6 +80,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php if ( displayNewsImage($view['wr_1']) == true) {?>
                 <img style="width:250px;margin:0 auto" src="<?=$view['wr_1']; ?>"/>              
             <?php } ?>
+            <?php include_once(G5_PATH.'/component/tts.php');?>       
         </div>
 
         

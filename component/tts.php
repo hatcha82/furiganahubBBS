@@ -1,9 +1,15 @@
 
- <button type="button"  id="speak" class="waves-effect waves-light btn">Speak</button>
+<div id="tts" style="display:none">
+  <select style="height:35px" id="voices"></select>
+  <a class="btn_b02 btn" style="background:#82c13f;cursor:pointer" id="speak" class="waves-effect waves-light btn"><i class="fa fa-volume-up"></i> 듣기</a>
+
+</div>
+<br>
+
+
+
 <div style="display:none">
-    <div>
-      <select id="voices"></select>
-    </div>
+    
     <div class="row">
       <div class="col s6">
         <label>Rate</label>
@@ -38,23 +44,30 @@
     if(speechSynthesis.speaking){
         speechSynthesis.cancel();
     }
+    
     speechSynthesis.onvoiceschanged = function() {
       var $voicelist = $('#voices');
-
+      var voiceSet = false;
       if($voicelist.find('option').length == 0) {
         speechSynthesis.getVoices().forEach(function(voice, index) {
           var $option = $('<option>')
           .val(index)
           .html(voice.name + (voice.default ? ' (default)' :''));
           $voicelist.append($option);
+          if(voice.lang == 'ja-JP' && voiceSet == false){
+            voiceSet = true;
+            $('#voices').val(index);
+            $("#tts").show();
+          } 
         });
-      
+        
       }
     }
 
     $('#speak').click(function(){
       if(speechSynthesis.speaking){
         speechSynthesis.cancel();
+        return;
       }
       var text = $('#message').val();
       var msg = new SpeechSynthesisUtterance();

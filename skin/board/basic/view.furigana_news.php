@@ -78,20 +78,18 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <div class="contents"> 
             
             <div id="bo_v_news_meta" style="text-align: center;">  
-            
-                          
                 <?php if ( displayNewsImage($view['wr_1']) == true) {?>
-                    <img style="width:250px;margin:0 auto" src="<?=get_view_thumbnail($view['wr_1']); ?>"/>              
+                    <img style="width:250px;margin:0 auto" src="<?=get_view_thumbnail($view['wr_1']); ?>"/> 
+                    <br>
+                    <br>             
                 <?php } ?>
-                
+                <?php include_once(G5_PATH.'/component/tts.php');?>       
             </div>
 
             
             <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>                    
             <div class="originalText"><h1>원본:</h1><?=$view['wr_content']?></div>
-            <div>
-            <?php include_once(G5_PATH.'/component/tts.php');?>   
-                </div>
+            
                 
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>
         <!-- } 본문 내용 끝 -->                  
