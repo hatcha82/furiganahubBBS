@@ -39,31 +39,34 @@
 
 
 <script>
-  $(function(){
+
+$( document ).ready(function() {
   if ('speechSynthesis' in window) {
+
+    setTimeout(initSetup, 2000)
+
     if(speechSynthesis.speaking){
         speechSynthesis.cancel();
     }
-    
-    speechSynthesis.onvoiceschanged = function() {
-      var $voicelist = $('#voices');
-      var voiceSet = false;
-      if($voicelist.find('option').length == 0) {
-        speechSynthesis.getVoices().forEach(function(voice, index) {
-          var $option = $('<option>')
-          .val(index)
-          .html(voice.name + (voice.default ? ' (default)' :''));
-          $voicelist.append($option);
-          if(voice.lang == 'ja-JP' && voiceSet == false){
-            voiceSet = true;
-            $('#voices').val(index);
-            $("#tts").show();
-          } 
-        });
-        
-      }
+    function initSetup(){
+      
+        var $voicelist = $('#voices');
+        var voiceSet = false;
+        if($voicelist.find('option').length == 0) {
+          speechSynthesis.getVoices().forEach(function(voice, index) {
+            var $option = $('<option>')
+            .val(index)
+            .html(voice.name);
+            $voicelist.append($option);
+            if(voice.lang == 'ja-JP' && voiceSet == false){
+              voiceSet = true;
+              $('#voices').val(index);
+              $("#tts").show();
+            } 
+          });
+          
+        }
     }
-
     $('#speak').click(function(){
       if(speechSynthesis.speaking){
         speechSynthesis.cancel();
@@ -87,4 +90,5 @@
     $('#modal1').openModal();
   }
 });
+
 </script>
