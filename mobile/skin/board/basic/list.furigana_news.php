@@ -78,11 +78,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         <img style="float:left;margin-right:10px;" src="<?=$list[$i]['wr_1']?>"/>  
                         <p>   
                         
-                        <?php echo "<span class='furigana'>" . $list[$i]['wr_8'] ."</span>" ?>  
+                        <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>  
                         <br>
                         
                         </p>
-                        <?php echo "<span class='translate'>" . $list[$i]['wr_9'] . "</span>" ?>                    
+                        <?php echo "<span class='translate'>" . $list[$i]['wr_8'] . "</span>" ?>                    
                         <div style="clear:both">
                         <?php
                         // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }

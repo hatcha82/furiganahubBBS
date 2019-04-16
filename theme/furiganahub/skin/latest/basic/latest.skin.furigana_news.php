@@ -14,9 +14,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
         <img style='width:50px;margin-right:3px;' src='<?=$publisher_img?>'/> 
         </li>
         <li class="borderBottom">
-        <?php  echo "<img style='float:left;margin-right:10px;margin-bottom:5px;' src='$thumbImage'/>"       ?>
+        <?php  echo "<img style='float:left;margin-right:10px;margin-bottom:5px;max-width:100px;' src='$thumbImage'/>"       ?>
             <?php
-            $subject = $list[$i]['wr_8'];
+            $subject = $list[$i]['wr_7'];
             $subject_title =  $subject;            
             if ($list[$i]['icon_secret']) echo "<i class=\"fa fa-lock\" aria-hidden=\"true\"></i><span class=\"sound_only\">비밀글</span> ";
             if ($list[$i]['icon_new']) echo "<span class=\"new_icon\">N<span class=\"sound_only\">새글</span></span>";
@@ -25,7 +25,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             $href = $list[$i]['href'];
             $subject_title = $subject_title;
             $subject = "<span class='furigana'><strong>$subject</strong></span><br><span style='color:#888'>$translate</span>";                        
-            $translate =  $list[$i]['wr_9'] ;                        
+            $translate =  $list[$i]['wr_8'] ;                        
             echo "<a href='$href' title='$subject_title' >$subject</a>";            
             echo "<div style='clear:both'>";
                 

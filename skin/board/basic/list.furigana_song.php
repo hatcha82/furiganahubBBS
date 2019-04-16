@@ -66,7 +66,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <input type="checkbox" id="chkall" onclick="if (this.checked) all_checked(true); else all_checked(false);">
             </th>
             <?php } ?>
-            <th scope="col">번호</th>
             <th scope="col">앨범</th>
             <th scope="col">제목</th>
             <th scope="col">아티스트</th>
@@ -87,19 +86,17 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <input type="checkbox" name="chk_wr_id[]" value="<?php echo $list[$i]['wr_id'] ?>" id="chk_wr_id_<?php echo $i ?>">
             </td>
             <?php } ?>
-            <td class="td_num2">
+            <td class="td_album">
             <?php
             if ($list[$i]['is_notice']) // 공지사항
                 echo '<strong class="notice_icon"><i class="fa fa-bullhorn" aria-hidden="true"></i><span class="sound_only">공지</span></strong>';
             else if ($wr_id == $list[$i]['wr_id'])
                 echo "<span class=\"bo_current\">열람중</span>";
             else
-                echo $list[$i]['num'];
+                $album_img = $list[$i]['wr_2'];
+                echo "<img src='$album_img'/>"
              ?>
-            </td>
-            <td class="td_album">
-                <img src="<?=$list[$i]['wr_2']?>"/>
-            </td>    
+          
 
             <td class="td_subject" style="padding-left:<?php echo $list[$i]['reply'] ? (strlen($list[$i]['wr_reply'])*10) : '0'; ?>px">
                 <?php

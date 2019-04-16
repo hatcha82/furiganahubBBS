@@ -53,7 +53,7 @@ include_once(G5_THEME_PATH.'/head.php');
                 where a.bo_device <> 'mobile' ";
     if(!$is_admin)
         $sql .= " and a.bo_use_cert = '' ";
-    $sql .= " and a.bo_table  in ('furigana_song', 'furigana_news') ";     
+    $sql .= " and a.gr_id  in ('furigana') ";     
     $sql .= " order by b.gr_order, a.bo_order ";    
     $result = sql_query($sql);
     for ($i=0; $row=sql_fetch_array($result); $i++) {

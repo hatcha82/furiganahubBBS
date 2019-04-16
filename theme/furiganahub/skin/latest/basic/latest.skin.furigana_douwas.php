@@ -9,44 +9,30 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
     <h2 class="lat_title"><a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=<?php echo $bo_table ?>"><?php echo $bo_subject ?></a></h2>
     <ul>
     <?php for ($i=0; $i<count($list); $i++) {  ?>
-        <li>
+        
+        <li class="borderBottom" style="line-height:30px;">
+        <?php  echo "<img style='float:left;margin-right:10px;margin-bottom:5px;max-width:100px;' src='$thumbImage'/>"       ?>
             <?php
-            $subject = $list[$i]['subject'];
-            $subject_title =  $subject;
-
-            if ($list[$i]['is_notice']){
-                $subject = "<strong>".$list[$i]['subject']."</strong>";                
-            }else if ($bo_table == 'furigana_song'){
-                $imageUrl = $list[$i]['wr_2'];                
-                $subject_title=  "[" . $list[$i]['wr_3'] . "] " . $list[$i]['wr_subject'];
-                $subject = "<img class='albumImage'src='$imageUrl'/>" . $subject_title;
-            }            
-            else{                
-            }
-
-
+            $subject = $list[$i]['wr_7'];
+            $subject_title =  $subject;            
             if ($list[$i]['icon_secret']) echo "<i class=\"fa fa-lock\" aria-hidden=\"true\"></i><span class=\"sound_only\">비밀글</span> ";
             if ($list[$i]['icon_new']) echo "<span class=\"new_icon\">N<span class=\"sound_only\">새글</span></span>";
             if ($list[$i]['icon_hot']) echo "<span class=\"hot_icon\">H<span class=\"sound_only\">인기글</span></span>";
-
-            
-            echo "<a href=\"".$list[$i]['href']."\" title=\"" . $subject_title . "\"  >";            
-            echo " " . $subject;            
-            echo "</a>";
-
-            // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
-            // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }
-
-             //echo $list[$i]['icon_reply']." ";
-           // if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
-            //if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
-
+            $thumbImage = $list[$i]['wr_1'];
+            $href = $list[$i]['href'];
+            $subject_title = $subject_title;
+            $subject = "<span class='furigana' style='line-height:40px;'><strong>$subject</strong></span><br><span style='color:#888'>$translate</span>";                        
+            $translate =  $list[$i]['wr_8'] ;                        
+            echo "<a href='$href' title='$subject_title' >$subject</a>";            
+            echo "<div style='clear:both'>";
+                
             if ($list[$i]['comment_cnt'])  echo "
             <span class=\"lt_cmt\">+ ".$list[$i]['comment_cnt']."</span>";
-
             ?>
 
-            <span class="lt_date"><?php echo $list[$i]['datetime'] ?></span>
+            <span class="lt_date"><?php echo $list[$i]['datetime'] ?>
+           
+        </span>
         </li>
     <?php }  ?>
     <?php if (count($list) == 0) { //게시물이 없을 때  ?>

@@ -24,8 +24,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php } ?>
             <span class="bo_v_tit">
             <?php
-            echo get_text($view['wr_subject']); // 글제목 출력
+            echo get_text($view['wr_subject']) . " - " . cut_str(get_text($view['wr_3']) , 70); // 글제목 출력
             ?></span>
+           
         </h2>
         
     </header>    
@@ -91,10 +92,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 </a>
                 <br>
                 <div style="position: relative; padding-bottom: 56.25%;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?=get_text($view['wr_youtube_id']);?>?autoplay=1&playsinline=1'" frameborder="0" gesture="media" allow="autoplay;encrypted-media" ></iframe>
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/<?=get_text($view['wr_1']);?>?autoplay=1&playsinline=1'" frameborder="0" gesture="media" allow="autoplay;encrypted-media" ></iframe>
                 </div>
                 저작권에 의한 플레이 불가능 할 경우 Youtube 이동 
-                <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" ><?=get_text($view['wr_subject']);?> - <?=get_text($view['wr_artist']);?></a>       
+                <a target="_blank" href="https://www.youtube.com/watch?v=<?=get_text($view['wr_1']);?>" ><?=get_text($view['wr_subject']);?> - <?=get_text($view['wr_3']);?></a>       
             </div> 
                 
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>

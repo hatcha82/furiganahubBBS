@@ -77,7 +77,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <!-- 본문 내용 시작 { -->
         <div class="contents"> 
             
-            <div id="bo_v_news_meta">  
+            <div id="bo_v_news_meta" style="text-align: center;">  
             
                           
                 <?php if ( displayNewsImage($view['wr_1']) == true) {?>

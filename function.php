@@ -52,9 +52,11 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
   
   return $html;
 }
-function displayFuriganaSongWithTranslate($furiganaText,$translateText){
+function displayFuriganaSongWithTranslate($furiganaText,$translateText){  
   $furigana = explode( "\n", $furiganaText);
   $translate = explode( "\n",$translateText);
+  if(count($translate) == 1) return $furiganaText;
+
   $html = "";
   for ($i=0; $i<=count($translate); $i++) {               
           $html.="$furigana[$i]<br><span style='font-size:0.9em;color:#777'>$translate[$i]</span><br><br>";            

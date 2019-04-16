@@ -7,14 +7,9 @@
   ,wr_comment
   ,wr_comment_reply
   ,ca_name
-  ,wr_option
-  ,wr_artist
-  ,wr_subject
-  ,wr_subject_furigana
-  ,wr_subejct_translate
-  ,wr_content
-  ,wr_furigana
-  ,wr_translate
+  ,wr_option  
+  ,wr_subject  
+  ,wr_content  
   ,wr_link1
   ,wr_link2
   ,wr_link1_hit
@@ -53,13 +48,8 @@ SELECT  a.id                      wr_id,
         ''                        wr_comment_reply, 
         ''                        ca_name, 
         'html2'                   wr_option,
-        a.artist                  wr_artist,
         a.title                   wr_subject, 
-        ''                        wr_subject_furigana, 
-        ''                        wr_subejct_translate, 
         a.lyrics                  wr_content, 
-        ''  			          wr_furigana, 
-        ''           			  wr_translate, 
         '' 		                  wr_link1, 
         ''                        wr_link2, 
         0                         wr_link1_hit, 
@@ -86,8 +76,8 @@ SELECT  a.id                      wr_id,
         case when a.naverBlogRefNo is null then '' else  a.naverBlogRefNo end       
                                   wr_6,  -- naverBlogRefNo
         ''                        wr_7,         
-		''						  wr_8,
-        a.tab           		  wr_9,
-        a.lyricsKor		  		  wr_10 
+		    ''						            wr_8,
+        a.tab           		      wr_9,
+        a.lyricsKor		  		      wr_10 
 FROM   jpn_tuto.Songs          a
                
