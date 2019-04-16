@@ -87,13 +87,17 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </div>
 
             
-            <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>        
-            
-            
+            <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>                    
+            <div class="originalText"><h1>원본:</h1><?=$view['wr_content']?></div>
+            <div>
+            <?php include_once(G5_PATH.'/component/tts.php');?>   
+                </div>
                 
         <?php //echo $view['rich_content']; // {이미지:0} 과 같은 코드를 사용할 경우 ?>
         <!-- } 본문 내용 끝 -->                  
-        </div>    
+        </div>
+       
+           
         <?php if ($is_signature) { ?><p><?php echo $signature ?></p><?php } ?>
 
 

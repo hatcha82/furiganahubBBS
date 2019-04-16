@@ -277,7 +277,9 @@ box-shadow: inset 0 2px 5px rgb(33, 135, 202);
 
 .furigana{font-size:1.3em;text-align: justify; white-space: font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
 .furigana rt{color:red}
-#bo_v_furigana {font-size:1.3em;text-align: justify; white-space: pre-wrap; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
+.originalText {background:#ddd;margin-bottom:20px;padding:20px;font-size:1em;text-align: justify; white-space: pre-line; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
+
+#bo_v_furigana {font-size:1.3em;text-align: justify; white-space: pre-line; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
 #bo_v_furigana rt{color:red}
 #youtube_area img{width:100px;}
 #youtube_area a{color:#4567b5}
