@@ -24,7 +24,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             if ($list[$i]['icon_hot']) echo "<span class=\"hot_icon\">H<span class=\"sound_only\">인기글</span></span>";
             
             $href = $list[$i]['href'];
-            $subject_title = $subject_title;
+            $subject_title = $list[$i]['wr_subject'] . $translate;
             $subject = "<span class='furigana'><strong>$subject</strong></span><br><span style='color:#888'>$translate</span>";                        
             $translate =  $list[$i]['wr_8'] ;                        
             echo "<a href='$href' title='$subject_title' >$subject</a>";            
