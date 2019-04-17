@@ -41,8 +41,11 @@
 <script>
 
 $( document ).ready(function() {
+  $(window).bind('hashchange', function() {
+      speechSynthesis.cancel();
+  });
   if ('speechSynthesis' in window) {
-
+   
     setTimeout(initSetup, 2000)
 
     if(speechSynthesis.speaking){

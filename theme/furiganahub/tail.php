@@ -6,8 +6,9 @@ if (G5_IS_MOBILE) {
     return;
 }
 ?>
-    <div style="width:845px;float:left"> 
-        <?=adfitBanner("DAN-t4w6dr2ubfat","728" ,"100")?>          
+    <div style="width:845px;float:left;text-align:center"> 
+        <?=adfitBanner("DAN-t4w6dr2ubfat","728" ,"100")?>   
+        <a href="https://m.do.co/c/169ac3b5d427" target="_blank"><img style="margin:0 auto" src="/img/adv/digitalOcean.jpg"/></a>       
     </div>
     </div>
     <div id="aside2">
