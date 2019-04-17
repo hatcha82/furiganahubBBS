@@ -57,10 +57,12 @@ $( document ).ready(function() {
         var voiceSet = false;
         if($voicelist.find('option').length == 0) {
           speechSynthesis.getVoices().forEach(function(voice, index) {
-            var $option = $('<option>')
-            .val(index)
-            .html(voice.name);
-            $voicelist.append($option);
+            if(voice.lang == 'ja-JP'){
+              var $option = $('<option>')
+              .val(index)
+              .html(voice.name);
+              $voicelist.append($option);
+            }
             if(voice.lang == 'ja-JP' && voiceSet == false){
               voiceSet = true;
               $('#voices').val(index);
