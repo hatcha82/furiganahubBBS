@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('News Job') {
       steps {
-        git branch: 'homeWork', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
+        git branch: 'master', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
       
         dir('scheduler/nodejs/furiganaNewsScheduler') {
             sh 'npm install'
