@@ -23,6 +23,7 @@ const sourceText = '';
     await papagoTranslate()       
   } catch (error) {
     console.log(`Error : ${error}` )
+    process.exit(1);
   }
 })();
 
