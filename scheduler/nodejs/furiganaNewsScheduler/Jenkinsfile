@@ -1,60 +1,23 @@
 pipeline {
   agent any 
   tools {nodejs "NodeJs 11.14.0"}
-  node {
-      try {
-          notifyBuild('STARTED')
-          stages {
-            stage('News Job') {
-              steps {
-                git branch: 'master', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
-              
-                dir('scheduler/nodejs/furiganaNewsScheduler') {
-                    sh 'npm install'
-                    withEnv(['DB_NAME=gnu5', 'DB_USER=gnu5', 'DB_PASS=gnu5', 'DIALECT=mysql', 'HOST=db.furiganahub.com']) {
-                        sh 'node bbs_newsbot.js'
-                    }
-                }
-                // emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-                // <pre>$BUILD_LOG</pre>
-                // Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'hatcha82@gmail.com'
-              }
+ 
+  stages {
+    stage('News Job') {
+      steps {
+        git branch: 'master', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
+      
+        dir('scheduler/nodejs/furiganaNewsScheduler') {
+            sh 'npm install'
+            withEnv(['DB_NAME=gnu5', 'DB_USER=gnu5', 'DB_PASS=gnu5', 'DIALECT=mysql', 'HOST=db.furiganahub.com']) {
+                sh 'node bbs_newsbot.js'
             }
-            
-          }
-    } catch (e) {
-      // If there was an exception thrown, the build failed
-      currentBuild.result = "FAILED"
-      throw e
-    } finally {
-      // Success or failure, always send notifications
-      notifyBuild(currentBuild.result)
+        }
+        // emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+        // <pre>$BUILD_LOG</pre>
+        // Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'hatcha82@gmail.com'
+      }
     }
-  }
-
-  def notifyBuild(String buildStatus = 'STARTED') {
-    // build status of null means successful
-    buildStatus =  buildStatus ?: 'SUCCESSFUL'
-
-    // Default values
-    def colorName = 'RED'
-    def colorCode = '#FF0000'
-    def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-    def summary = "${subject} (${env.BUILD_URL})"
-
-    // Override default values based on build status
-    if (buildStatus == 'STARTED') {
-      color = 'YELLOW'
-      colorCode = '#FFFF00'
-    } else if (buildStatus == 'SUCCESSFUL') {
-      color = 'GREEN'
-      colorCode = '#00FF00'
-    } else {
-      color = 'RED'
-      colorCode = '#FF0000'
-    }
-
-    // Send notifications
-    slackSend (color: colorCode, message: summary)
+    
   }
 }
