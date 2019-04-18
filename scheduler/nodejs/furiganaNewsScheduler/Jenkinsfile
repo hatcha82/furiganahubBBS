@@ -1,14 +1,13 @@
 pipeline {
-  agent any
- 
+  agent any 
   tools {nodejs "NodeJs 11.14.0"}
  
   stages {
     stage('News Job') {
       steps {
-        git branch: 'homeWork', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/jpnTuto.git'
+        git branch: 'homeWork', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
       
-        dir('bot/newsBot') {
+        dir('scheduler/nodejs/furiganaNewsScheduler') {
             sh 'npm install'
             withEnv(['DB_NAME=gnu5', 'DB_USER=gnu5', 'DB_PASS=gnu5', 'DIALECT=mysql', 'HOST=db.furiganahub.com']) {
                 sh 'node bbs_newsbot.js'

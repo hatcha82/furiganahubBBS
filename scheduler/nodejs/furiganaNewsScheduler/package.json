@@ -1,0 +1,19 @@
+{
+  "name": "newsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crawler": "^1.2.0",
+    "dotenv": "^6.0.0",
+    "kuroshiro": "^1.1.1",
+    "kuroshiro-analyzer-kuromoji": "^1.1.0",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.39.0"
+  }
+}
