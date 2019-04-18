@@ -3,4 +3,4 @@ FROM jenkins/jenkins:lts
 USER root
 RUN apt-get update && apt-get install -y libxss1
 # drop back to the regular jenkins user - good practice
-# USER jenkins
+USER jenkins

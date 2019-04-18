@@ -9,7 +9,7 @@ pipeline {
       
         dir('scheduler/nodejs/furiganaTransForNews') {
             sh 'rm -rf node_modules'
-            sh 'npm install  --ignore-scripts'
+            sh 'npm install'
             withEnv(['DB_NAME=gnu5', 'DB_USER=gnu5', 'DB_PASS=gnu5', 'DIALECT=mysql', 'HOST=db.furiganahub.com']) {
                 sh 'node newsTransOnetime.js'
             }
