@@ -1,0 +1,24 @@
+pipeline {
+  agent any 
+  tools {nodejs "NodeJs 11.14.0"}
+ 
+  stages {
+    stage('News Translate Job') {
+      steps {
+        git branch: 'master', credentialsId: 'hatcha82', url: 'https://github.com/hatcha82/furiganahubBBS.git'
+      
+        dir('scheduler/nodejs/furiganaTranslateSong') {
+            
+            sh 'npm install'
+            withEnv(['DB_NAME=gnu5', 'DB_USER=gnu5', 'DB_PASS=gnu5', 'DIALECT=mysql', 'HOST=db.furiganahub.com']) {
+                sh 'node furiganaTranslateSong.js'
+            }
+        }
+        // emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+        // <pre>$BUILD_LOG</pre>
+        // Check console output at $BUILD_URL to view the results.''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'hatcha82@gmail.com'
+      }
+    }
+    
+  }
+}
