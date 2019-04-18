@@ -34,7 +34,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             <span class=\"lt_cmt\">+ ".$list[$i]['comment_cnt']."</span>";
             ?>
 
-            <span class="lt_date"><?php echo $list[$i]['datetime'] ?>
+            <span class="lt_date"><?php 
+            $phpdate = strtotime( $list[$i]['wr_4'] );
+            $mysqldate = date( 'Y-m-d H:i', $phpdate );
+
+            echo $mysqldate ?>
            
         </span>
         </li>
