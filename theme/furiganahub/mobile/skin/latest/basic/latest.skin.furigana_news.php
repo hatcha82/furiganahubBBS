@@ -15,14 +15,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             if ($list[$i]['icon_secret']) echo "<i class=\"fa fa-lock\" aria-hidden=\"true\"></i> ";
             //echo $list[$i]['icon_reply']." ";
             echo "<a href=\"".$list[$i]['href']."\" class=\"lt_tit\">";
-            if ($list[$i]['is_notice'])
+            if ($list[$i]['is_notice']){
                 echo "<strong>".$list[$i]['subject']."</strong>";
-            else
-                
+            }
+            else{
                 $imageUrl = $list[$i]['wr_1'];
                 echo "<img style='float:left;margin-right:10px;max-width:100px' src='$imageUrl'/>";
                 echo "<span class='furigana'>" . $list[$i]['subject'] ."</span>";
                 echo "<span class='translate'>" . conv_subject($list[$i]['wr_8'] , 40, '…'). "</span>";
+            }
+                
                 // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
                 // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }
             if ($list[$i]['icon_new']) echo " <span class=\"new_icon\">NEW</span>";
