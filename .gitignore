@@ -11,3 +11,5 @@ ckeditor*/
 log/
 g5_tree/
 naver*.html
+node_modules/
+.env
