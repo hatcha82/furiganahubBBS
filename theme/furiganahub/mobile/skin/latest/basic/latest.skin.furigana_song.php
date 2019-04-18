@@ -17,7 +17,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             if ($list[$i]['is_notice'])
                 echo "<strong>".$list[$i]['subject']."</strong>";
             else
-                echo $list[$i]['subject'];
+                echo "<img  class='albumImag' style='max-width:60px;margin-right:5px;' src='". $list[$i]['wr_2'] . "'/>";
+                echo "<span style='line-height:40px;'>" .$list[$i]['subject'] . "</span>";
+                
 
                 // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
                 // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }

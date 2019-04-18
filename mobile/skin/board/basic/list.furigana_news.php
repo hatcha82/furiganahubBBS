@@ -75,7 +75,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         <?php echo $list[$i]['icon_reply']; ?>
                         <?php if ($list[$i]['is_notice']) { ?><strong class="notice_icon"><i class="fa fa-volume-up" aria-hidden="true"></i>공지</strong><?php } ?> 
                         
-                        <img style="float:left;margin-right:10px;" src="<?=$list[$i]['wr_1']?>"/>  
+                        <img style="float:left;margin-right:10px;max-width:100px " src="<?=$list[$i]['wr_1']?>"/>  
                         <p>   
                         
                         <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>  

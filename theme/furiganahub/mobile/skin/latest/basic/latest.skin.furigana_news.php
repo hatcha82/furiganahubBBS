@@ -11,26 +11,33 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
     <?php for ($i=0; $i<count($list); $i++) { ?>
         <li>
             <?php
+           
             if ($list[$i]['icon_secret']) echo "<i class=\"fa fa-lock\" aria-hidden=\"true\"></i> ";
             //echo $list[$i]['icon_reply']." ";
             echo "<a href=\"".$list[$i]['href']."\" class=\"lt_tit\">";
             if ($list[$i]['is_notice'])
                 echo "<strong>".$list[$i]['subject']."</strong>";
             else
-                echo $list[$i]['subject'];
-
+                
+                $imageUrl = $list[$i]['wr_1'];
+                echo "<img style='float:left;margin-right:10px;max-width:100px' src='$imageUrl'/>";
+                echo "<span class='furigana'>" . $list[$i]['subject'] ."</span>";
+                echo "<span class='translate'>" . conv_subject($list[$i]['wr_8'] , 40, '…'). "</span>";
                 // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
                 // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }
             if ($list[$i]['icon_new']) echo " <span class=\"new_icon\">NEW</span>";
             if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
             if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
             if ($list[$i]['icon_hot']) echo " <i class=\"fa fa-heart\" aria-hidden=\"true\"></i>";
-
+           
             echo "</a>";
 
             ?>
             <div class="lt_info">
-                <?php echo $list[$i]['name'] ?>
+                <?php 
+                 $publisher_img = $list[$i]['wr_3'];
+                 echo "<img style='width:50px' src='$publisher_img'/>";
+                ?>
                 <span class="lt_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> 
                 <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['datetime2'] ?></span>
             </div>
