@@ -26,7 +26,7 @@ if (PHP_VERSION >= '5.1.0') {
 보안서버주소가 없다면 공란으로 두시면 되며 보안서버주소 뒤에 / 는 붙이지 않습니다.
 입력예) https://www.domain.com:443/gnuboard5
 */
-define('G5_DOMAIN', 'http://localhost');
+define('G5_DOMAIN', 'http://localhost:8888');
 define('G5_HTTPS_DOMAIN', '');
 
 /*
