@@ -30,8 +30,8 @@ pipeline {
             slackSend(color:  'danger', message:  "뉴스 데몬 실패 :${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
        }
        // trigger every-works
-       always {
+       //always {
            //slackSend(color:  '#D4DADF', message:   ' "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"')
-       }
+       //}
     }
 }
