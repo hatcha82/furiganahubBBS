@@ -3,10 +3,15 @@ var Crawler = require("crawler")
 const Kuroshiro = require('kuroshiro')
 const KuromojiAnalyzer = require('kuroshiro-analyzer-kuromoji')
 const kuroshiro = new Kuroshiro()
-const {sequelize} = require('./models')
+const Sequelize = require('sequelize')
 const config = require('./config/config')
-const {Article} = require('./models') 
-var debug = true
+var sequelize = new Sequelize(
+  config.db.database,
+  config.db.user,
+  config.db.password,
+  config.db.options
+)
+
 var listCrawler = new Crawler({
   maxConnections : 1,
   rateLimit: 1000 * 10,    
@@ -14,8 +19,9 @@ var listCrawler = new Crawler({
 });
 var detailCrawler = new Crawler({
   maxConnections : 1,
-  rateLimit: 1000 * 10,    
-  callback : listCrawlerCallBack
+  rateLimit: 1000 * 10,  
+  callback: detailCrawlerCallBack  
+  
 });
 
 
@@ -30,8 +36,6 @@ var detailCrawler = new Crawler({
       var newsLit = $('ul.ymuiList li');
       
       newsLit.each(async function(){
-        if(debug){
-          
           var title = $(this).find('.fsmt').text()
           var newsURL = $(this).find('.fsmt').find('a').attr('href')
           var newsImagURL =$(this).find('img').attr('src')  
@@ -49,30 +53,28 @@ var detailCrawler = new Crawler({
             article: null,
             furigana: null,
           }
+          var sequelize = new Sequelize(
+            config.db.database,
+            config.db.user,
+           config.db.password,
+            config.db.options
+          )
+          
           var sql = `SELECT * FROM g5_write_furigana_news WHERE  wr_link1 = '${newsURL}' limit 1`
           var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})    
-         
-           
+            sequelize.close()
           if(article.length == 1){
             console.log(`${newsCompanyName} 새로운 뉴스가 없습니다.`)
+
           }else{                        
             console.log(`새로운 뉴스가 있습니다. 본문을 찾습니다.`)
             var crawlerparam = [{
               uri: newsURL,                        
               callback: detailCrawlerCallBack,
               param : param,
-              preRequest: function(options, done) {
-                  var ranTime = Math.floor((Math.random() * 10) + 1)
-                  console.log(`본문 접속 ${ranTime}Sec 후에 진행... : ${newsURL} `)
-                  setTimeout(function() {
-                    done();
-                  }, 1000)
-              }
             }] 
-            detailCrawler.queue(crawlerparam)   
+            detailCrawler.queue(crawlerparam)  
           }
-          debug = true
-        }
     })
   }
   done();
@@ -91,7 +93,18 @@ async function detailCrawlerCallBack(error, res, done){
     param.createdUserId = 3
     param.updatedUserId = 3
     ;
-
+    console.log(`
+News Title : ${param.title}
+Article
+${article}
+`)
+    var sequelize = new Sequelize(
+      config.db.database,
+      config.db.user,
+      config.db.password,
+      config.db.options
+    )
+    
     var sql = `
    INSERT INTO gnu5.g5_write_furigana_news
    SELECT  null                      wr_id, 
@@ -141,72 +154,42 @@ async function detailCrawlerCallBack(error, res, done){
     sql = `update g5_board set bo_count_write = bo_count_write + 1 where bo_table = 'furigana_news'`
     const result = await sequelize.query(sql);
     console.log(result);
+    sequelize.close();
+    
   }
   done();
 }
+(async () => {
 
-async function start(){
   await kuroshiro.init(new KuromojiAnalyzer());
-  var result = await kuroshiro.convert("感じ取れたら手を繋ごう、重なるのは人生のライン and レミリア最高！", { to: "hiragana" });
-  console.log(`Kuroshiro Started... \n ${result}`)
-  result = await sequelize.sync({force: false})
-  console.log(`DB Started... \n ${result}`)
-  var sql = `SELECT count(*) count FROM g5_write_furigana_news `
-  
-  var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})   
-  console.log(`Article Count ${article[0].count}`)   
-  addQueue(nnn)
-  addQueue(ann)
-  addQueue(jnn)
-  addQueue(fnn)
+    var result = await kuroshiro.convert("感じ取れたら手を繋ごう、重なるのは人生のライン and レミリア最高！", { to: "hiragana" });
+    console.log(`Kuroshiro Started... \n ${result}`)
+    console.log(`DB Started...`)
+    var sql = `SELECT count(*) count FROM g5_write_furigana_news `    
+    var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})   
+    console.log(`Article Count ${article[0].count}`)   
+    
+    addQueue(nnn)
+    addQueue(ann)
+    addQueue(jnn)
+    addQueue(fnn)
+    sequelize.close();
+})();
 
- 
-}
+
 async function addQueue(page, param){   
   
   var crawlerparam = [{
     uri: page,                        
     callback: listCrawlerCallBack,
     param : param,
-    preRequest: function(options, done) {
-        var ranTime = Math.floor((Math.random() * 10) + 1)
-        console.log(`${ranTime}Sec 후에 진행...`)
-        setTimeout(function() {
-          done();
-        }, 1000)
-    }
   }] 
   await listCrawler.queue(crawlerparam)
-  
-  
 }
+//start() 
 
-start()
 var lasctCalledDate = new Date()
 var nnn = `https://headlines.yahoo.co.jp/videonews/nnn` //니테레
 var ann = `https://headlines.yahoo.co.jp/videonews/ann` //Nippon NewsNetwork(ANN)
 var jnn = `https://headlines.yahoo.co.jp/videonews/jnn` //TBS
 var fnn = `https://headlines.yahoo.co.jp/videonews/fnn` //fnn
-
-setInterval(function() {  
-  addQueue(nnn)
-  addQueue(ann)
-  addQueue(jnn)
-  addQueue(fnn)
-  lasctCalledDate = new Date()
-  console.log(`Now : ${new Date().toDateString()} Queue Size: ${listCrawler.queueSize}`) 
-},60 * 10 * 1000)
-
-setInterval(function() {
-  var currentDate = new Date()
-  var duration = ((new Date() - lasctCalledDate)  ) /100 /6 /60
-  var nextCall =  60 - duration
-  nextCall = Math.floor(nextCall)
-  console.log(`
-  Now : ${new Date().toString()} 
-  NextCall : ${nextCall}Min Left  
-  List Queue Size: ${listCrawler.queueSize}
-  detailCrawler
-  Detail Queue Size: ${listCrawler.queueSize}`
-  ) 
-},60 * 1000)
