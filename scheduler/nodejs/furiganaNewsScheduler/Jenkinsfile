@@ -21,9 +21,9 @@ pipeline {
   }
   post {
        // only triggered when blue or green sign
-       success {
-            slackSend(color:  'good', message: "새로운 뉴스 생성 완료 :${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
-       }
+       //success {
+       //     slackSend(color:  'good', message: "새로운 뉴스 생성 완료 :${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+       //}
        // triggered when red sign
        failure {
            
