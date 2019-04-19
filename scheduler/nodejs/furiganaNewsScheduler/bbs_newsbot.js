@@ -103,9 +103,9 @@ SELECT  null                      wr_id,
         ''                        wr_comment_reply, 
         :newsPublisher            ca_name, 
         'html2'                   wr_option, 
-        :title                  wr_subject,         
-        :article                wr_content, 
-        :newsUrl                 wr_link1, 
+        :title                    wr_subject,         
+        :article                  wr_content, 
+        :newsUrl                  wr_link1, 
         ''                        wr_link2, 
         0                         wr_link1_hit, 
         0                         wr_link2_hit, 
@@ -162,14 +162,22 @@ async function detailCrawlerCallBack(error, res, done){
     ;
 
     
-   
+   try {
     const newArticle = await sequelize.query(insertsql,{replacements: param});
     console.log(newArticle);
-
+    var sql = `update g5_write_furigana_news set wr_parent = wr_id where wr_id = ${newArticle[0]}`
+    var result = await sequelize.query(sql);
     var sql = `update g5_board set bo_count_write = bo_count_write + 1 where bo_table = 'furigana_news'`
-    const result = await sequelize.query(sql);
+    result = await sequelize.query(sql);
     console.log(result);
-    sequelize.close();
+    
+    
+   } catch (error) {
+     console.log(error)
+     process.exit(1);
+   }
+   sequelize.close(); 
+    
     
   }
   done();
