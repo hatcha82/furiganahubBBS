@@ -31,6 +31,7 @@ header("Pragma: no-cache"); // HTTP/1.0
 <!doctype html>
 <html lang="ko">
 <head>
+
 <meta charset="utf-8">
 <?php
 if (G5_IS_MOBILE) {
@@ -50,7 +51,17 @@ if($config['cf_add_meta'])
 <!--[if lte IE 8]>
 <script src="<?php echo G5_JS_URL ?>/html5.js"></script>
 <![endif]-->
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128960444-1"></script>
 <script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-128960444-1');
+</script>
+<script>
+
 // 자바스크립트에서 사용하는 전역변수 선언
 var g5_url       = "<?php echo G5_URL ?>";
 var g5_bbs_url   = "<?php echo G5_BBS_URL ?>";
