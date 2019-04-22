@@ -113,9 +113,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                         <?php echo $list[$i]['icon_reply'] ?>
                         <?php
                             if (isset($list[$i]['icon_secret'])) echo rtrim($list[$i]['icon_secret']);
-                         ?>  
-                                                                  
-                        <?php echo displayFuriganaSongWithTranslate($list[$i]['wr_7'],$list[$i]['wr_8']);?>
+                         ?>                                                                    
+                        <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>  
+                        <br>
+                        </p>
+                        <?php echo "<span class='translate'>" . $list[$i]['wr_8'] . "</span>" ?>                    
+                        <div style="clear:both">
                     </a>
                     <?php
                     // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }

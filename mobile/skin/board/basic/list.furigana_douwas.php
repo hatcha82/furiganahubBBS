@@ -98,8 +98,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
                 </div>
                 <div class="bo_info">
-                    <span class="sound_only">작성자</span><?php echo $list[$i]['wr_3'] ?>
-                    
+                    <!-- <span class="sound_only">작성자</span><?php echo $list[$i]['wr_3'] ?>
+                     -->
 
                     <span class="song_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['datetime2'] ?></span>
                 
