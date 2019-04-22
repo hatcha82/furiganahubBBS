@@ -79,6 +79,7 @@ var g5_cookie_domain = "<?php echo G5_COOKIE_DOMAIN ?>";
 <script src="<?php echo G5_JS_URL ?>/wrest.js?ver=<?php echo G5_JS_VER; ?>"></script>
 <script src="<?php echo G5_JS_URL ?>/placeholders.min.js"></script>
 <link rel="stylesheet" href="<?php echo G5_JS_URL ?>/font-awesome/css/font-awesome.min.css">
+<link rel="shortcut icon" href="<?php echo G5_IMG_URL; ?>/favicon.ico" type="image/x-icon" />
 <?php
 if(G5_IS_MOBILE) {
     echo '<script src="'.G5_JS_URL.'/modernizr.custom.70111.js"></script>'.PHP_EOL; // overflow scroll 감지
