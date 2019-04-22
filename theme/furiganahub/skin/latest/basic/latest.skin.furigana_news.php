@@ -25,7 +25,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             
             $href = $list[$i]['href'];
             $translate =  $list[$i]['wr_8'] ;
-            $subject_title = $list[$i]['wr_subject'] . $translate;
+            $translate = ($translate === '' ? '번역중' :  $translate);
+            $subject_title = $list[$i]['wr_subject'] . ' ' . $translate;
             $subject = "<span class='furigana'><strong>$subject</strong></span><br><span style='color:#888'>$translate</span>";                        
                 
             $thumbImage = $list[$i]['wr_1'];                    

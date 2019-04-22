@@ -55,7 +55,7 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
 function displayFuriganaSongWithTranslate($furiganaText,$translateText){  
   $furigana = explode( "\n", $furiganaText);
   $translate = explode( "\n",$translateText);
-  if(count($translate) == 1) return $furiganaText . '<br>' . "<span style='font-size:0.9em;color:#777'>번역중</span><br><br>";
+  if(count($translate) == 1) return $furiganaText;
 
   $html = "";
   for ($i=0; $i<=count($translate); $i++) {               

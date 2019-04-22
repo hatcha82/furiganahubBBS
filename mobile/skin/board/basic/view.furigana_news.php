@@ -20,8 +20,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php if ($category_name) { ?>
             <span class="bo_v_cate"><?php echo $view['ca_name']; // 분류 출력 끝 ?></span> 
             <?php } ?>
-            <span class="bo_v_tit">
-            <?php echo displayFuriganaSongWithTranslate($view['wr_7'],$view['wr_8']);?>
+            <span class="bo_v_tit furigana" id="bo_v_furigana_song">
+            <?php echo $view['wr_7']. "<br>";?>
+            <?php echo $view['wr_8'];?>
             </span>
             <span class="bo_v_tit">
             </span>

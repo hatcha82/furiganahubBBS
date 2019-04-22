@@ -6,7 +6,13 @@ SELECT  a.id                      wr_id,
         0                         wr_is_comment, 
         0                         wr_comment, 
         ''                        wr_comment_reply, 
-        ''                        ca_name, 
+        case 
+            when a.articleType = 'JPN01' then '일본동화'
+            when a.articleType = 'JPN02' then '세계동화'
+            when a.articleType = 'JPN03' then '세계동화'
+            when a.articleType = 'JPN04' then '이솝우화'
+            else ''
+        end                        ca_name, 
         'html2'                   wr_option,
         a.title                   wr_subject, 
         a.articelOnlyText         wr_content, 
@@ -28,10 +34,10 @@ SELECT  a.id                      wr_id,
         '172.17.0.1'              wr_ip, 
         ''                        wr_facebook_user, 
         ''                        wr_twitter_user, 
-        a.imageUrl  	          wr_1,  -- YoutubeID
-        a.audioUrl                wr_2,  -- Album Image Url
-        a.articleType             wr_3,  -- Artist
-        ''                        wr_4,  -- newsPublishedDate
+        a.imageUrl  	          wr_1,  -- imageUrl
+        a.audioUrl                wr_2,  -- audioUrl
+        a.articleType             wr_3,  -- articleType
+        a.episod                  wr_4,  -- episod
         ''                        wr_5,  
         ''                        wr_6, 
         a.titleFurigana           wr_7,         

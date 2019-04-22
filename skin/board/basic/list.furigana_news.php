@@ -87,13 +87,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <?php } ?>
             <td class="td_num2">
             <?php
-            if ($list[$i]['is_notice']) // 공지사항
+            if ($list[$i]['is_notice']){
                 echo '<strong class="notice_icon"><i class="fa fa-bullhorn" aria-hidden="true"></i><span class="sound_only">공지</span></strong>';
-            else if ($wr_id == $list[$i]['wr_id'])
+            } // 공지사항
+            else if ($wr_id == $list[$i]['wr_id']){
                 echo "<span class=\"bo_current\">열람중</span>";
-            else
+            }
+            else{
                 $publisher_img = $list[$i]['wr_3'];
                 echo "<img style='width:50px' src='$publisher_img'/>";
+            }
              ?>
             </td>
             
@@ -112,7 +115,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                          ?>                                           
                         <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>                     
                         <br>
-                        <?php echo $list[$i]['wr_8']  ?>    
+                        <span style="color:#888;"><?php $translate = $list[$i]['wr_8'];  $translate = ($translate === '' ? '번역중' :  $translate); ; echo  $translate; ?></span>
                     </a>
                     <?php
                     // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
