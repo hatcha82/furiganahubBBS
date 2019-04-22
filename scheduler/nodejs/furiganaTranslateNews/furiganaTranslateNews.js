@@ -30,7 +30,12 @@ const sourceText = '';
 async function getArticle(){
       
   const Op = sequelize.Op
-  var sql = `SELECT * FROM g5_write_furigana_news WHERE  wr_10 = '' limit 1`
+  var sql = `
+SELECT * FROM g5_write_furigana_news 
+WHERE  wr_10 = '' 
+ORDER BY wr_4 desc
+limit 1
+  `
   var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})    
   sequelize.close()
 
