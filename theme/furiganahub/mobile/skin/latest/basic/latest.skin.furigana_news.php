@@ -20,28 +20,32 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             }
             else{
                 $imageUrl = $list[$i]['wr_1'];
+                $translate = $list[$i]['wr_8'];
+                $translate = ($translate == '' ? '번역중' : $translate);
                 echo "<img style='float:left;margin-right:10px;max-width:100px' src='$imageUrl'/>";
-                echo "<span class='furigana'>" . $list[$i]['subject'] ."</span>";
-                echo "<span class='translate'>" . conv_subject($list[$i]['wr_8'] , 40, '…'). "</span>";
-            }
-                
+                echo "<span class='furigana'>" . $list[$i]['subject'] ."</span><br>";
+                echo "<span style='color:#888' class='translate'> $translate</span>";
                 // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
                 // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }
-            if ($list[$i]['icon_new']) echo " <span class=\"new_icon\">NEW</span>";
-            if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
-            if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
-            if ($list[$i]['icon_hot']) echo " <i class=\"fa fa-heart\" aria-hidden=\"true\"></i>";
+                if ($list[$i]['icon_new']) echo " <span class=\"new_icon\">NEW</span>";
+                if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
+                if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
+                if ($list[$i]['icon_hot']) echo " <i class=\"fa fa-heart\" aria-hidden=\"true\"></i>";
+            }
+                
+                
            
             echo "</a>";
 
             ?>
+            <div style='clear:both'></div>
             <div class="lt_info">
                 <?php 
                  $publisher_img = $list[$i]['wr_3'];
                  echo "<img style='width:50px' src='$publisher_img'/>";
                 ?>
                 <span class="lt_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> 
-                <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['datetime2'] ?></span>
+                <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['wr_4'] ?></span>
             </div>
         </li>
     <?php } ?>

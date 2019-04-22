@@ -68,40 +68,47 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <?php
                     if ($is_category && $list[$i]['ca_name']) {
                     ?>
-                    <a href="<?php echo $list[$i]['ca_name_href'] ?>" class="bo_cate_link"><?php echo $list[$i]['ca_name'] ?></a>
+                    <a href="<?php echo $list[$i]['ca_name_href'] ?>" class="bo_cate_link">
+                        <?php $publisher_img = $list[$i]['wr_3'];
+                        echo "<img style='width:50px' src='$publisher_img'/>";?>
+                    </a>
                     <?php } ?>
 
                     <a href="<?php echo $list[$i]['href'] ?>" class="bo_subject">
                         <?php echo $list[$i]['icon_reply']; ?>
                         <?php if ($list[$i]['is_notice']) { ?><strong class="notice_icon"><i class="fa fa-volume-up" aria-hidden="true"></i>공지</strong><?php } ?> 
-                        
-                        <img style="float:left;margin-right:10px;max-width:100px " src="<?=$list[$i]['wr_1']?>"/>  
-                        <p>   
-                        
-                        <?php echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>" ?>  
-                        <br>
-                        <span style="color:#888;"><?php $translate = $list[$i]['wr_8'];  $translate = ($translate === '' ? '번역중' :  $translate); ; echo  $translate; ?></span>                        
-                        </p>
-                        
-                        <div style="clear:both">
                         <?php
-                        // if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
-
+                        $imageUrl = $list[$i]['wr_1'];
+                        $translate = $list[$i]['wr_8'];
+                        $translate = ($translate == '' ? '번역중' : $translate);
+                        echo "<img style='float:left;margin-right:10px;max-width:100px' src='$imageUrl'/>";
+                        echo "<span class='furigana'>" . $list[$i]['wr_7'] ."</span>";
+                        
+                        // if ($list[$i]['link']['count']) { echo "[{$list[$i]['link']['count']}]"; }
+                        // if ($list[$i]['file']['count']) { echo "<{$list[$i]['file']['count']}>"; }
+                        // if ($list[$i]['icon_new']) echo " <span class=\"new_icon\">NEW</span>";
+                        // if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
+                        // if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
+                        // if ($list[$i]['icon_hot']) echo " <i class=\"fa fa-heart\" aria-hidden=\"true\"></i>";
+                        ?>
+                        <div style="clear:both"></div>
+                    </a>
+                 
+                </div>
+                <div>   
+                    <?php
+                        echo "<span style='color:#888' class='translate'> $translate</span>";
+                        if ($list[$i]['file']['count']) { echo '<'.$list[$i]['file']['count'].'>'; }
                         if (isset($list[$i]['icon_new'])) echo $list[$i]['icon_new'];
                         if (isset($list[$i]['icon_hot'])) echo $list[$i]['icon_hot'];
                         if (isset($list[$i]['icon_file'])) echo $list[$i]['icon_file'];
                         if (isset($list[$i]['icon_link'])) echo $list[$i]['icon_link'];
                         if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret'];
-                        $publisher_img = $list[$i]['wr_3'];
-                        echo "<img style='width:50px' src='$publisher_img'/>";
                         ?>
-                        
-                    </a>
-
                 </div>
-                <div class="bo_info" style="margin-top:10px;">
+                <div class="bo_info" >
                     <span class="sound_only">작성자</span><?php echo $list[$i]['newsPublisher'] ?>
-                    <span id="news_date" class="bo_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['wr_datetime'] ?></span>
+                    <span id="news_date" style="position:static" class="bo_date"><?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><i class="fa fa-commenting-o" aria-hidden="true"></i><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['wr_datetime'] ?></span>
                 </div>
                 
             </li><?php } ?>
