@@ -105,7 +105,7 @@ async function uploadArticleBlog(){
   var formData =  {
     title: title
   , contents:contents
-  , categoryNo : 13 // CATEGORY 14뉴스  : 13 test boad
+  , categoryNo : 14 // CATEGORY 14뉴스  : 13 test boad
  
   }
   var attachImageInfo = await getImageInfoForUpload(article.wr_1)
@@ -232,7 +232,7 @@ async function uploadSongBlog(){
   var formData =  {
     title:title
   , contents:contents
-  , categoryNo : 13 // CATEGORY 10가사  : 13 test boad
+  , categoryNo : 10 // CATEGORY 10가사  : 13 test boad
  
   }
   var attachImageInfo = await getImageInfoForUpload(song.wr_2)
@@ -310,18 +310,18 @@ function refreshToken(){
 
 setInterval(refreshToken, 1000 * 60 * 10)
 
-// setInterval(function(){
-//   var ranTime = Math.floor((Math.random() * 10) + 1)
-//   setTimeout(() => {
-//     uploadArticleBlog()
-//   }, ranTime) 
-// }, 1000 * 60 * 3)
-// setInterval(function(){
-//   var ranTime = Math.floor((Math.random() * 10) + 1)
-//   setTimeout(() => {
-//     uploadSongBlog()
-//   }, ranTime) 
-// }, 1000 * 60 * 60)
+setInterval(function(){
+  var ranTime = Math.floor((Math.random() * 10) + 1)
+  setTimeout(() => {
+    uploadArticleBlog()
+  }, ranTime) 
+}, 1000 * 60 * 3)
+setInterval(function(){
+  var ranTime = Math.floor((Math.random() * 10) + 1)
+  setTimeout(() => {
+    uploadSongBlog()
+  }, ranTime) 
+}, 1000 * 60 * 60)
 
 
 app.get('/naverlogin', function (req, res) {
