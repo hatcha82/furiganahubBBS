@@ -47,6 +47,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                 <?php if ($search_href) { ?><li><a href="<?php echo $search_href ?>" class="btn_b01 btn"><i class="fa fa-search" aria-hidden="true"></i> 검색</a></li><?php } ?>
             </ul>
             <ul class="bo_v_com" style="margin-top:0">
+            <li>  <?php include_once(G5_PATH.'/component/tts.php');?>       </li>
             <li><a href="<?php echo $list_href ?>" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
                 <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01 btn"><i class="fa fa-reply" aria-hidden="true"></i> 답변</a></li><?php } ?>
                 <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a></li><?php } ?>
@@ -79,8 +80,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <div id="bo_v_song_meta">                
                
                 <img class="bo_v_song_img" src="<?=get_view_thumbnail($view['wr_2']); ?>"/>              
-                <br>
-                <?php include_once(G5_PATH.'/component/tts.php');?>       
+                <br>              
             </div>
 
             
