@@ -1,13 +1,9 @@
 
 <div id="tts" style="display:none">
-  <select style="height:35px" id="voices"></select>
+  <select style="height:35px;display:none" id="voices"></select>
   <a class="btn_b02 btn" style="background:#82c13f;cursor:pointer" id="speak" class="waves-effect waves-light btn"><i class="fa fa-volume-up"></i> 듣기</a>
-
 </div>
 <br>
-
-
-
 <div style="display:none">
     
     <div class="row">

@@ -194,7 +194,7 @@ box-shadow: 0 0 8px rgba(65,98,255,0.8);}
 #bo_v_news_meta{text-align: center}
 #bo_v_song_meta img{width:250px;margin:0 auto;display: block}
 #bo_v_song_meta div.title{font-weight: bold;text-align: center;font-size:2em}
-#bo_v_furigana_song {padding:10px;font-size:1.3em;text-align: justify; white-space: pre-wrap; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
+#bo_v_furigana_song {padding:10px;font-size:1.3em;text-align: justify; white-space: pre-line; font-family: "メイリオ","Hiragino Kaku Gothic Pro",Meiryo,"ヒラギノ角ゴ Pro W3","MS PGothic","MS UI Gothic",Helvetica,Arial,sans-serif;overflow-x:auto}
 #bo_v_furigana_song rt{color:red}
 #youtube_area img{max-width: 60px;margin-right: }
 #youtube_area a{color:#4567b5}
