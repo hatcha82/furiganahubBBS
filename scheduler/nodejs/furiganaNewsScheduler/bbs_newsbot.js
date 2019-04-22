@@ -154,9 +154,10 @@ async function detailCrawlerCallBack(error, res, done){
           config.db.password,
           config.db.options
         )
+    param.title =param.title.replace(/・/g,' ')
     param.article = article.replace(/・/g,' ')  //・ error로 인한 furigana 컨버팅 실패
     param.titleFurigana = await kuroshiro.convert(param.title,{mode: 'furigana', to: 'hiragana', romajiSystem: 'passport'})
-    param.furigana = await kuroshiro.convert(article,{mode: 'furigana', to: 'hiragana', romajiSystem: 'passport'})
+    param.furigana = await kuroshiro.convert(param.article,{mode: 'furigana', to: 'hiragana', romajiSystem: 'passport'})
     param.createdUserId = 3
     param.updatedUserId = 3
     ;
