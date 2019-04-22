@@ -103,12 +103,12 @@ async function uploadArticleBlog(){
   var header = "Bearer " + access_token; // Bearer 다음에 공백 추가
 
   var formData =  {
-    title:title
+    title: title
   , contents:contents
   , categoryNo : 13 // CATEGORY 14뉴스  : 13 test boad
  
   }
-  var attachImageInfo = await getImageInfoForUpload(article.newsImageUrl)
+  var attachImageInfo = await getImageInfoForUpload(article.wr_1)
   if(attachImageInfo !== null){
     formData.image = [
       { value: attachImageInfo.image , options: { filename: attachImageInfo.basename,  contentType: `image/${attachImageInfo.extname}`}}
@@ -122,7 +122,7 @@ async function uploadArticleBlog(){
 
   request.post(options, async function (error, response, body) {
     var sql = `
-    UPDATE  g5_write_furigana_song 
+    UPDATE  g5_write_furigana_news 
     SET     wr_5 =  :wr_5
     ,       wr_6 =  :wr_6
     WHERE   wr_id = :wr_id;
@@ -185,37 +185,44 @@ async function getImageInfoForUpload(imgURL){
 async function uploadSongBlog(){
   console.log("Upload Started...")
   const Op = sequelize.Op
-  var song = await Song.findOne({
-    where :{
-      naverBlogUpload : 'N',
-      albumImageUrl : {[Op.ne]: null},
-      lyricsKor : {[Op.ne]: null},
-      youtubeId : {[Op.ne]: null},
-    },
-    order: ['youtubeId'],
-    limit: 1,
-  })
-  if(!song){
-    return;
+  var sql = `
+  SELECT  *
+  FROM    g5_write_furigana_song 
+  WHERE   wr_5 = 'N'   
+  AND     wr_10 <> '' 
+  AND     wr_2 <> ''
+  AND     wr_1 <> ''
+  ORDER
+  BY      wr_1
+  limit   1
+  `
+  var song = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})    
+  
+  
+  if(song.length == 1){
+    song = song[0];
+  }else{
+    return ;
   }
-  var newTemplate = blogtemplate.replace('[[title]]', song.title)
-  newTemplate = newTemplate.replace('[[artist]]',song.artist)
-  newTemplate = newTemplate.split("[[id]]").join(song.id)
-  newTemplate = newTemplate.split("[[albumImageUrl]]").join(song.albumImageUrl)  
-  newTemplate = newTemplate.replace('[[youtubeId]]',song.youtubeId)
+
+  var newTemplate = blogtemplate.replace('[[title]]', song.wr_subject)
+  newTemplate = newTemplate.replace('[[artist]]',song.wr_3)
+  newTemplate = newTemplate.split("[[id]]").join(song.wr_id)
+  newTemplate = newTemplate.split("[[albumImageUrl]]").join(song.wr_2)  
+  newTemplate = newTemplate.replace('[[youtubeId]]',song.wr_1)
 
 
-  var furigana = song.tab;
+  var furigana = song.wr_9;
   furigana =  furigana.replace(/\n/g,'<br>')
   newTemplate = newTemplate.replace('[[furigana]]',furigana)
   
-  var lyricsKor = song.lyricsKor;
+  var lyricsKor = song.wr_10;
   if(lyricsKor){
     lyricsKor =  lyricsKor.replace(/\n/g,'<br>')
     newTemplate = newTemplate.replace('[[lyricsKor]]',lyricsKor)
   }
   
-  var title = `[J-pop : ${song.artist}] ${song.title}`;
+  var title = `[J-pop : ${song.wr_3}] ${song.wr_subject}`;
   var contents = newTemplate;
 
   var api_url = 'https://openapi.naver.com/blog/writePost.json';
@@ -225,10 +232,10 @@ async function uploadSongBlog(){
   var formData =  {
     title:title
   , contents:contents
-  , categoryNo : 10 // CATEGORY 10가사  : 13 test boad
+  , categoryNo : 13 // CATEGORY 10가사  : 13 test boad
  
   }
-  var attachImageInfo = await getImageInfoForUpload(song.albumImageUrl)
+  var attachImageInfo = await getImageInfoForUpload(song.wr_2)
   if(attachImageInfo !== null){
     formData.image = [
       { value: attachImageInfo.image , options: { filename: attachImageInfo.basename,  contentType: `image/${attachImageInfo.extname}`}}
@@ -239,11 +246,18 @@ async function uploadSongBlog(){
       formData: formData, 
       headers: {'Authorization': header}
    };
-  request.post(options, function (error, response, body) {
+   request.post(options, async function (error, response, body) {
+    var sql = `
+    UPDATE  g5_write_furigana_song 
+    SET     wr_5 =  :wr_5
+    ,       wr_6 =  :wr_6
+    WHERE   wr_id = :wr_id;
+    `
+
     if (!error && response.statusCode == 200) {
-      
+      console.log('Blog Uploaded')
       var jsonBody
-      var naverBlogRefNo
+      var naverBlogRefNo = '';
       var naverBlogUpload = 'Y'
       try {
         jsonBody= JSON.parse(body);
@@ -253,38 +267,24 @@ async function uploadSongBlog(){
       } catch (error) {
         console.log(error)
         naverBlogUpload = 'E'
+        naverBlogRefNo = '';
       }
       console.log(naverBlogRefNo)
-      Song.update({
-        naverBlogUpload: naverBlogUpload,
-        naverBlogRefNo: naverBlogRefNo
-      }, {
-        where: { id: song.id }
-      })
-      .then(result =>{
-        console.log(`result: ${result}  updated row song.id ${song.id} ,title ${song.title}` )
-        
-      })
-      .catch(error =>{
-        console.log(`result: ${error}  updated row song.id ${song.id} ,title ${song.title}` )
-      })  
+      song.wr_5 = naverBlogUpload
+      song.wr_6 = naverBlogRefNo
+     
+      result = await sequelize.query(sql,{replacements: song});
+      console.log(result);
+
+     
     } else {
-    
-      Song.update({
-        naverBlogUpload: 'E',
-      }, {
-        where: { id: song.id }
-      })
-      .then(result =>{
-        console.log(`result: ${result}  updated row song.id ${song.id} ,title ${song.title}` )
-        
-      })
-      .catch(error =>{
-        console.log(`result: ${error}  updated row song.id ${song.id} ,title ${song.title}` )
-      })  
-      if(response != null) {
-        
-      }
+      naverBlogUpload = 'E'
+      naverBlogRefNo = '';
+      song.wr_5 = naverBlogUpload
+      song.wr_6 = naverBlogRefNo
+     
+      result = await sequelize.query(sql,{replacements: song});
+      console.log(result);     
     }
   });
 }
@@ -347,7 +347,7 @@ app.get('/naverlogin', function (req, res) {
         access_token = jsonBody.access_token
         refresh_token = jsonBody.refresh_token     
         uploadArticleBlog()   
-        //uploadSongBlog()
+        uploadSongBlog()
         res.end(body);
       } else {
         res.status(response.statusCode).end();
