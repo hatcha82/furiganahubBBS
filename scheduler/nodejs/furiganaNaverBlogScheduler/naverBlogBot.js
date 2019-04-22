@@ -62,13 +62,13 @@ async function uploadArticleBlog(){
   WHERE   wr_5 = 'N'   
   AND     wr_10 <> '' 
   AND     date(CURRENT_DATE()) = date(wr_4)
-  AND     ca_name in ('日テレNEWS24','TBS News i')
+  
   ORDER
   BY      wr_4 DESC
   limit   1
   `
+  //AND     (ca_name like '%NEWS24' or ca_name like  'TBS%')
   var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})    
-  
   
   if(article.length == 1){
     article = article[0];
