@@ -30,7 +30,7 @@ const sourceText = '';
 async function getSong(){
       
   const Op = sequelize.Op
-  var sql = `SELECT * FROM g5_write_furigana_song WHERE  wr_10 = '' limit 1`
+  var sql = `SELECT * FROM g5_write_furigana_song WHERE wr_content <> '' and wr_10 = '' limit 1`
   var song = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})    
   sequelize.close()
 
