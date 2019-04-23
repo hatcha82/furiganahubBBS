@@ -139,7 +139,9 @@ async function uploadArticleBlog(){
         naverBlogRefNo = jsonBody.message.result.logNo;
         console.log(`naverBlogRefNo : ${naverBlogRefNo}`)
       } catch (error) {
+        jsonBody= JSON.parse(body);
         console.log(error)
+        console.log(jsonBody)
         naverBlogUpload = 'E'
         naverBlogRefNo = '';
       }
@@ -265,7 +267,9 @@ async function uploadSongBlog(){
         naverBlogRefNo = jsonBody.message.result.logNo;
         console.log(`naverBlogRefNo : ${naverBlogRefNo}`)
       } catch (error) {
+        jsonBody= JSON.parse(body);
         console.log(error)
+        console.log(jsonBody)
         naverBlogUpload = 'E'
         naverBlogRefNo = '';
       }
