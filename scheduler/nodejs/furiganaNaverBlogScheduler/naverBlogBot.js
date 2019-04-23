@@ -62,7 +62,7 @@ async function uploadArticleBlog(){
   WHERE   wr_5 = 'N'   
   AND     wr_10 <> '' 
   AND     date(CURRENT_DATE()) = date(wr_4)
-  
+  AND 		( INSTR(ca_name ,'NEWS24') or INSTR(ca_name,'TBS News i'))
   ORDER
   BY      wr_4 DESC
   limit   1
