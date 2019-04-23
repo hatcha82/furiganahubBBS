@@ -60,6 +60,14 @@ gtag('js', new Date());
 
 gtag('config', 'UA-128960444-1');
 </script>
+<!--  naver analytics -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "be864530b1f4e8";
+wcs_do();
+</script>
+
 <script>
 
 // 자바스크립트에서 사용하는 전역변수 선언
