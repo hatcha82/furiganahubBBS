@@ -45,7 +45,7 @@ border: 1px solid #558ab7 !important;
 
 /* 레이아웃 크기 지정 */
 #hd, #wrapper, #ft{min-width:1280px;}
-#hd{ background-image: url(http://www.furiganahub.com/_nuxt/img/dd207f9.jpg);}
+#hd{ background-image: url('/img/bg001.jpg');}
 #wrapper{background: #fff}
 #hd_pop,
 #hd_wrapper,
