@@ -8,6 +8,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT,
       host: process.env.HOST,
+      timezone: "+09:00",
       pool: {
         max: 5,
         min: 0,
