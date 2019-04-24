@@ -12,11 +12,16 @@ function displayNewsImage($url){
 
 
 
-function adsenseBanner($slot,$width, $height){
-  $html = '<ins class="adsbygoogle" style="display:inline-block;width:[width]px;height:[height]px;" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
+function adsenseBanner($slot,$width, $height, $background = ""){
+  $html = '<ins class="adsbygoogle" style="display:inline-block;width:[width]px;height:[height]px;[background]" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
   $html = str_replace("[data-ad-slot]",$slot,$html);  
   $html = str_replace("[width]",$width,$html);
   $html = str_replace("[height]",$height,$html);
+  if($background !== ""){
+    $html = str_replace("[background]", "background:$background",$html);
+  }else{
+    $html = str_replace("[background]", "",$html);
+  }
   return $html;
 }
 

@@ -12,7 +12,13 @@ if (G5_IS_MOBILE) {
     </div>
     </div>
     <div id="aside2">
-    <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>            
+    <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>     
+    <div style="margin-top:10px">       
+    <?=adsenseBanner("8544247119",160, 600)?>
+    </div>
+    </div>
+    <div id="aside3">
+    <?=adsenseBanner("5002611441",160, 600)?>
     </div>
     <div id="aside">
     
