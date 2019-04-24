@@ -9,6 +9,15 @@ function displayNewsImage($url){
     return false;
   }
 }
+
+
+
+
+function adsenseBanner($slot){
+  $html = '<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
+  $html = str_replace("[data-ad-slot]",$slot,$html);  
+  return $html;
+}
 function adfitBanner($unit, $width, $height){
   $html = join('', array(
     '<div style="margin:0px auto;width:[width]px;height:[height]px;">'

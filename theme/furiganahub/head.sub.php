@@ -67,17 +67,8 @@ if(!wcs_add) var wcs_add = {};
 wcs_add["wa"] = "be864530b1f4e8";
 wcs_do();
 </script>
-
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6250524064430849",
-    enable_page_level_ads: true
-  });
-</script>
-
-<script>
-
 // 자바스크립트에서 사용하는 전역변수 선언
 var g5_url       = "<?php echo G5_URL ?>";
 var g5_bbs_url   = "<?php echo G5_BBS_URL ?>";

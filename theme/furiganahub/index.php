@@ -11,32 +11,11 @@ include_once(G5_THEME_PATH.'/head.php');
 ?>
 
 <h2 class="sound_only">최신글</h2>
-
- 
-    <?php
-    //  furigana
-    $sql = " select bo_table
-                from `{$g5['board_table']}` a left join `{$g5['group_table']}` b on (a.gr_id=b.gr_id)
-                where a.bo_device <> 'mobile' ";
-    if(!$is_admin){
-        $sql .= " and a.bo_use_cert = '' ";
-        $sql .= "  and b.gr_id <> 'issue'  ";
-    }
-    $sql .= " and a.gr_id  in ('furigana', 'issue') ";     
-    $sql .= " order by b.gr_order, a.bo_order ";    
-    $result = sql_query($sql);
-    for ($i=0; $row=sql_fetch_array($result); $i++) {
-        if ($i%2==1) $lt_style = "margin-left:2%";
-        else $lt_style = "";
-    ?>
-    <div >
-        <?php      
-        echo latest('theme/basic', $row['bo_table'], 5, 45);
-        ?>
-    </div>
-    <?php
-    }
-    ?>
+    <?php  echo latest('theme/basic','furigana_news', 5, 45);?>
+    <?=adsenseBanner("6629063040")?>
+    <?php  echo latest('theme/basic','furigana_song', 5, 45);?>
+    <?=adsenseBanner("1902338212")?>
+    <?php  echo latest('theme/basic','furigana_douwas', 5, 45);?>
 <div class="latest_wr">
     <!--  사진 최신글2 { -->
     <?php
