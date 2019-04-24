@@ -180,7 +180,7 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
 #container_wr {z-index:5;margin:0 auto;height:100%;zoom:1}
 #aside {box-shadow: 2px 3px 10px 1px #adbfd2; float:right;width:340px;padding-bottom:20px;background: #e7ebf3;height: 100%;border: 1px solid #adbfd2;margin:20px 0 0px 0px}
 #aside2 {box-shadow: 2px 3px 10px 1px #adbfd2; position: absolute;margin-left:-200px;margin-top:20px;padding:10px;background: #e7ebf3;border: 1px solid #adbfd2;}
-#aside3 {box-shadow: 2px 3px 10px 1px #adbfd2; position: absolute;right:0;margin-top:20px;padding:10px;background: #e7ebf3;border: 1px solid #adbfd2;}
+#aside3 {box-shadow: 2px 3px 10px 1px #adbfd2; position: absolute;margin-left:1295px;margin-top:20px;padding:10px;background: #e7ebf3;border: 1px solid #adbfd2;}
 
 
 #container  {box-shadow: 2px 3px 10px 1px #adbfd2;padding:20px;z-index:4;position:relative;float:left;min-height:500px;height:auto !important;margin:20px  0;height:500px;font-size:1em;width:920px;zoom:1;background: #fff;border: 1px solid #adbfd2;}
