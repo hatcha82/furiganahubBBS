@@ -8,11 +8,11 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
 
 
      <?php  echo latest('theme/basic','furigana_news', 5, 25);?>
-     <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("7724143550")?></div>
+     <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("7724143550",320, 100)?></div>
      <?php  echo latest('theme/basic','furigana_song', 5, 25);?>
-     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("7967686131")?></div>
+     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("7967686131",320, 100)?></div>
      <?php  echo latest('theme/basic','furigana_douwas', 5, 25);?>
-     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("4523265146")?></div>
+     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("4523265146",320, 100)?></div>
 <?php
 //최신글
 $sql = " select bo_table

@@ -12,11 +12,11 @@ include_once(G5_THEME_PATH.'/head.php');
 
 <h2 class="sound_only">최신글</h2>
     <?php  echo latest('theme/basic','furigana_news', 5, 45);?>
-    <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("6629063040")?></div>
+    <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("6629063040",728, 90)?></div>
     <?php  echo latest('theme/basic','furigana_song', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212")?></div>
+    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212",728, 90)?></div>
     <?php  echo latest('theme/basic','furigana_douwas', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558")?></div>
+    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558",728, 90)?></div>
 <div class="latest_wr">
     <!--  사진 최신글2 { -->
     <?php
