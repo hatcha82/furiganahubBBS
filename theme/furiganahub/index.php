@@ -16,6 +16,7 @@ include_once(G5_THEME_PATH.'/head.php');
     <?php  echo latest('theme/basic','furigana_song', 5, 45);?>
     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212")?></div>
     <?php  echo latest('theme/basic','furigana_douwas', 5, 45);?>
+    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558")?></div>
 <div class="latest_wr">
     <!--  사진 최신글2 { -->
     <?php
