@@ -6,11 +6,21 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
 
 <!-- 메인화면 최신글 시작 -->
 
+
+     <?php  echo latest('theme/basic','furigana_news', 5, 25);?>
+     <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("7724143550")?></div>
+     <?php  echo latest('theme/basic','furigana_song', 5, 25);?>
+     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("7967686131")?></div>
+     <?php  echo latest('theme/basic','furigana_douwas', 5, 25);?>
+     <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("4523265146")?></div>
 <?php
-//  최신글
+//최신글
 $sql = " select bo_table
             from `{$g5['board_table']}` a left join `{$g5['group_table']}` b on (a.gr_id=b.gr_id)
-            where a.bo_device <> 'pc'";
+            where a.bo_device <> 'pc'
+            and b.gr_id <> 'furigana'
+            ";
+            
 if(!$is_admin){
     $sql .= " and a.bo_use_cert = '' ";
     $sql .= "  and b.gr_id <> 'issue'  ";
