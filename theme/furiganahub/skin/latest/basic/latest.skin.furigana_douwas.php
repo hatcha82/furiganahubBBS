@@ -10,7 +10,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
     <ul>
     <?php for ($i=0; $i<count($list); $i++) {  ?>
         
-        <li class="borderBottom" style="line-height:30px;">
+        <li class="borderBottom" style="line-height:30px;padding-right:0">
         <?php  $thumbImage = $list[$i]['wr_1']; echo "<img style='float:left;margin-right:10px;margin-bottom:5px;max-width:100px;' src='$thumbImage'/>"       ?>
             <?php
             $subject = $list[$i]['wr_7'];
@@ -25,13 +25,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
             $subject = "<span class='furigana' style='line-height:40px;'><strong>$subject</strong></span><br><span style='color:#888'>$translate</span>";                        
                                  
             echo "<a href='$href' title='$subject_title' >$subject</a>";            
+            echo "<span style='float:right;margin-top:-10px' class=\"lt_cmt\">조회수 ".$list[$i]['wr_hit']."</span>";
             echo "<div style='clear:both'>";
                 
-            if ($list[$i]['comment_cnt'])  echo "
-            <span class=\"lt_cmt\">+ ".$list[$i]['comment_cnt']."</span>";
             ?>
-
-            <span class="lt_date"><?php echo $list[$i]['datetime'] ?>
+            
            
         </span>
         </li>

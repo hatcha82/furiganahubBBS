@@ -9,7 +9,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
     <h2 class="lat_title"><a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=<?php echo $bo_table ?>"><?php echo $bo_subject ?></a></h2>
     <ul>
     <?php for ($i=0; $i<count($list); $i++) {  ?>
-        <li class="borderBottom">
+        <li class="borderBottom" style='padding-right:0;'>
             <?php
             $subject = $list[$i]['subject'];
             $subject_title =  $subject;
@@ -41,12 +41,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
            // if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ;
             //if ($list[$i]['icon_link']) echo " <i class=\"fa fa-link\" aria-hidden=\"true\"></i>" ;
 
-            if ($list[$i]['comment_cnt'])  echo "
-            <span class=\"lt_cmt\">+ ".$list[$i]['comment_cnt']."</span>";
+            
 
             ?>
-
-            <span class="lt_date"><?php echo $list[$i]['datetime'] ?></span>
+            <?php echo "<span style='float:right;margin-top:18px' class=\"lt_cmt\">조회수 ".$list[$i]['wr_hit']."</span>"?>
         </li>
     <?php }  ?>
     <?php if (count($list) == 0) { //게시물이 없을 때  ?>
