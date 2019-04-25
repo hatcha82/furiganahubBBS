@@ -18,7 +18,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
         <option value="wr_subject||wr_content"<?php echo get_selected($_GET['sfl'], "wr_subject||wr_content") ?>>제목+내용</option>
         <option value="wr_subject"<?php echo get_selected($_GET['sfl'], "wr_subject") ?>>제목</option>
         <option value="wr_content"<?php echo get_selected($_GET['sfl'], "wr_content") ?>>내용</option>
-        <option value="wr_artist"<?php echo get_selected($_GET['sfl'], "wr_artist") ?>>아티스트</option>
         <option value="mb_id"<?php echo get_selected($_GET['sfl'], "mb_id") ?>>회원아이디</option>
         <option value="wr_name"<?php echo get_selected($_GET['sfl'], "wr_name") ?>>이름</option>
         
@@ -127,12 +126,58 @@ add_stylesheet('<link rel="stylesheet" href="'.$search_skin_url.'/style.css">', 
 
             <li>
                 <div class="sch_tit">
-                    <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" class="sch_res_title"><?php echo $comment_def ?><?php echo $list[$idx][$i]['subject'] ?></a>
+                    <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" class="sch_res_title"><?php echo $comment_def ?>
+                    <?php
+                    if(strpos($search_table[$idx],'furigana_song') !== false ){
+                        echo $list[$idx][$i]['subject'];
+                    }else if(strpos($search_table[$idx],'furigana_news') !== false ){
+                        echo $list[$idx][$i]['wr_7'] . "<br><span style='color:#888'>" .$list[$idx][$i]['wr_8'] . "</span>";
+                    }else if(strpos($search_table[$idx],'furigana_douwas') !== false ){
+                        echo $list[$idx][$i]['wr_7'] . "<br>" .$list[$idx][$i]['wr_8'];
+                    }else{
+                        echo $list[$idx][$i]['subject'];
+                    }
+                    ?>
+                    </a>
                     <a href="<?php echo $list[$idx][$i]['href'] ?><?php echo $comment_href ?>" target="_blank" class="pop_a"><i class="fa fa-share-square-o" aria-hidden="true"></i>새창</a>
                 </div>
-                <p><?php echo $list[$idx][$i]['content'] ?></p>
+                <p>
+                <?php
+                if(strpos($search_table[$idx],'furigana_song') !== false ){
+                    $image = $list[$idx][$i]['wr_2'];
+                    echo "<img style='float:left;margin-right:10px;max-width:75px;max-height:75px;' src='$image'/> ";
+                }else if(strpos($search_table[$idx],'furigana_news') !== false ){
+                    $image = $list[$idx][$i]['wr_1'];
+                    echo "<img style='float:left;margin-right:10px;max-width:120px;' src='$image'/> ";
+                }else if(strpos($search_table[$idx],'furigana_douwas') !== false ){
+                    $image = $list[$idx][$i]['wr_1'];
+                    echo "<img style='float:left;margin-right:10px;max-width:120px;' src='$image'/> ";
+                }else{
+                }
+                ?>
+                <?php echo $list[$idx][$i]['content'] ?></p>
                 <div class="sch_info">
-                    <?php echo $list[$idx][$i]['name'] ?>
+                <?php
+                    if(strpos($search_table[$idx],'furigana_song') !== false ){
+                        
+                        $artist = $list[$idx][$i]['wr_name'];
+                        if($image === ''){
+                            echo "$artist";
+                        }else{
+                            echo "<span class='profile_img'><img src='$image' alt='no_profile' width='20' height='20' title=''> $artist</span>";
+                        }
+                        
+                    }else if(strpos($tmp_write_table,'furigana_news') !== false ){
+                        $image = $list[$idx][$i]['wr_3'];
+                        $publisher = $list[$idx][$i]['wr_2'];
+                        echo "<img src='$image' alt='$publisher' width='50'  title='$publisher'>";
+                    }else if(strpos($tmp_write_table,'furigana_douwas') !== false ){
+                        echo $list[$idx][$i]['ca_name'];   
+                    }else{
+                        echo $list[$idx][$i]['name'];   
+                    }
+                    ?>
+                     
                     <span class="sch_datetime"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$idx][$i]['wr_datetime'] ?></span>
                 </div>
             </li>

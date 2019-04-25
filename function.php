@@ -13,6 +13,10 @@ function displayNewsImage($url){
 
 
 function adsenseBanner($slot,$width, $height, $background = ""){
+  
+  if(strpos(G5_DOMAIN,'localhost') !== false){
+    return "";
+  }
   $html = '<ins class="adsbygoogle" style="display:inline-block;width:[width]px;height:[height]px;[background]" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
   $html = str_replace("[data-ad-slot]",$slot,$html);  
   $html = str_replace("[width]",$width,$html);
@@ -26,6 +30,9 @@ function adsenseBanner($slot,$width, $height, $background = ""){
 }
 
 function adfitBanner($unit, $width, $height){
+  if(strpos(G5_DOMAIN,'localhost') !== false){
+    return "";
+  }
   $html = join('', array(
     '<div style="margin:0px auto;width:[width]px;height:[height]px;">'
     ,  '<ins class="kakao_ad_area" style="display:none;" '
@@ -48,6 +55,7 @@ function adfitBanner($unit, $width, $height){
   return $html;
 }
 function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$searchWord){
+  
   $furigana = explode( "\n", $furiganaText);
   $translate = explode( "\n",$translateText);
   $html = "";
@@ -65,7 +73,9 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
     }
   } 
   
-  
+  if($html == ""){
+    $html = $furiganaText;
+  }
   return $html;
 }
 function displayFuriganaSongWithTranslate($furiganaText,$translateText){  

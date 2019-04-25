@@ -214,7 +214,7 @@ if ($stx) {
 
                 
                 if(strpos($tmp_write_table,'furigana') !== false ){
-                    $content = displayFuriganaWithTranslateSearchResult($row['wr_content'],$row['wr_translate'], $stx);                                        
+                    $content = displayFuriganaWithTranslateSearchResult($row['wr_content'],$row['wr_10'], $stx);                                        
                 }else{
                     $content = strip_tags($row['wr_content']);
                    
