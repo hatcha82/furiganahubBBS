@@ -31,13 +31,21 @@ if (G5_IS_MOBILE) {
         echo latest('theme/notice', 'notice', 4, 13);
         ?>
         <?php echo outlogin('theme/basic'); // 외부 로그인, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
+        <div style="width:298px;margin:0 auto;">
+            <div id="youtube_area" style="width:298px;margin-top:10px;margin-bottom:20px;border:5px solid #fff">
+                <div style="position: relative; padding-bottom: 56.25%;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/coYw-eVU0Ks?autoplay=0&playsinline=1'" frameborder="0" gesture="media" allow="autoplay;encrypted-media" ></iframe>
+                </div>
+                <!-- <a target="_blank" href="https://www.youtube.com/watch?v=<coYw-eVU0Ks" ></a>        -->
+            </div>
+        </div> 
         <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
         <div style="margin-top:20px;">
         <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>    
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         <?php echo visit('theme/basic'); // 접속자집계, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
-        
         </div>
+        
     </div>
     
 </div>

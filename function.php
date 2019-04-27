@@ -17,7 +17,7 @@ function adsenseBanner($slot,$width, $height, $background = ""){
   if(strpos(G5_DOMAIN,'localhost') !== false){
     return "";
   }
-  $html = '<ins class="adsbygoogle" style="display:inline-block;width:[width]px;height:[height]px;[background]" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
+  $html = '<ins class="adsbygoogle" style="display:inline-block;width:[width]px;max-height:[height]px;[background]" data-ad-client="ca-pub-6250524064430849" data-ad-slot="[data-ad-slot]"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';          
   $html = str_replace("[data-ad-slot]",$slot,$html);  
   $html = str_replace("[width]",$width,$html);
   $html = str_replace("[height]",$height,$html);
@@ -34,7 +34,7 @@ function adfitBanner($unit, $width, $height){
     return "";
   }
   $html = join('', array(
-    '<div style="margin:0px auto;width:[width]px;height:[height]px;">'
+    '<div style="margin:0px auto;width:[width]px;max-height:[height]px;">'
     ,  '<ins class="kakao_ad_area" style="display:none;" '
     ,  'data-ad-unit    = "[unit]"'
     ,  'data-ad-width   = "[width]"'
