@@ -15,11 +15,17 @@ include_once(G5_THEME_PATH.'/head.php');
     
     
     <?php  echo latest('theme/basic','furigana_news', 5, 45);?>
-    <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("6629063040",728, 90)?></div>
+    <div style="text-align: center; margin-bottom: 20px;">
+    <iframe width="728" height="90" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_728.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106088&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
+    </div>
     <?php  echo latest('theme/basic','furigana_song', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212",728, 90)?></div>
+    <div style="text-align: center;margin-bottom: 20px;">
+    <iframe width="728" height="90" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_728.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106087&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
+    </div>
     <?php  echo latest('theme/basic','furigana_douwas', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558",728, 90)?></div>
+    <div style="text-align: center;margin-bottom: 20px;">
+    <iframe width="728" height="90" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_728.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106089&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
+    </div>
 <div class="latest_wr">
     <!--  사진 최신글2 { -->
     <?php
