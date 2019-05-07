@@ -49,6 +49,27 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             </ul>
             <ul class="bo_v_com" style="margin-top:0">
             <li><?php include_once(G5_PATH.'/component/tts.php');?></li>
+            <li>            
+                <script>
+                    function printDiv(html){
+                        w=window.open();
+                        var html = [
+                            '<h3>[TITLE]</h3>'
+                        ,    '<div style="padding:10px;">'
+                        ,   '[BODY]'
+                        ,   '<div>'
+                        ].join('');
+                        html = html.replace('[TITLE]', $("#bo_v_title").html())
+                        html = html.replace('[BODY]', $("#bo_v_furigana").html())
+                        w.document.write(html);
+                        w.print();
+                        w.close();
+                    }
+                </script>
+                <a class="btn_b02 btn" onclick="printDiv('')" style="background:#f0ba00;cursor:pointer" class="waves-effect waves-light btn"><i class="fa fa-print"></i> 인쇄</a>
+            </li>
+            <li><?php include_once(G5_PATH.'/component/furiganaToggleBtn.php');?></li>
+            
             <li><a href="<?php echo $list_href ?>" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
                 <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01 btn"><i class="fa fa-reply" aria-hidden="true"></i> 답변</a></li><?php } ?>
                 <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a></li><?php } ?>
@@ -87,7 +108,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                
             </div>
 
-            
             <div id="bo_v_furigana"><?php echo displayFuriganaSongWithTranslate($view['wr_9'],$view['wr_10']);?></div>                    
             <div class="originalText"><h1>원본:</h1><?=$view['wr_content']?></div>
             
