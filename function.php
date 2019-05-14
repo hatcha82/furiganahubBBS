@@ -93,7 +93,7 @@ function displayFuriganaSongWithTranslate($furiganaText,$translateText){
   $translate =  multiexplode(array("\n","."),$translateText);
   if(count($translate) == 1) return $furiganaText;
 
-  $html = "";
+  $html = "<br>";
   for ($i=0; $i<=count($translate); $i++) {  
           if( strlen( $furigana[$i]) !== 0){
             $html.="$furigana[$i]。<br><span style='font-size:0.9em;color:#777'>$translate[$i].</span><br><br>";            
