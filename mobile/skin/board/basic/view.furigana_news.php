@@ -12,7 +12,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     <div class="btn_top top">     
         <?php if ($reply_href) { ?><a href="<?php echo $reply_href ?>" class="btn_b01"><i class="fa fa-reply" aria-hidden="true"></i> 답변</a><?php } ?>
         <?php if ($write_href) { ?><a href="<?php echo $write_href ?>" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a><?php } ?>
+        
+        <div style="float:right;margin-left:5px;"><?php include_once(G5_PATH.'/component/furiganaToggleBtn.php');?>      </div>
         <div style="float:right;margin-left:5px;"><?php include_once(G5_PATH.'/component/tts.php');?>       </div>
+        
     </div>
 <article id="bo_v" style="width:<?php echo $width; ?>">
     <header>
