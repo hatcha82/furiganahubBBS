@@ -56,9 +56,8 @@ function adfitBanner($unit, $width, $height){
 }
 function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$searchWord){
   
-
-  $furigana =  multiexplode(array("\n","。"),$furiganaText);
-  $translate =  multiexplode(array("\n","."),$translateText);
+  $furigana = explode( "\n", $furiganaText);
+  $translate = explode( "\n",$translateText);
   $html = "";
   $foundIndex = 0;
   $lintCount = 0;
@@ -68,11 +67,8 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
     } else if( strpos($translate[$i],$searchWord) !== false ){                       
       $foundIndex = $i;
     }
-
     if( $foundIndex > 0 && $lintCount <=10){
-      if( strlen( $furigana[$i]) !== 0){
-      $html.="$furigana[$i]。$translate[$i].";   
-      }         
+      $html.="$furigana[$i] $translate[$i]";            
     }
   } 
   
@@ -81,23 +77,13 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
   }
   return $html;
 }
-
-function multiexplode ($delimiters,$string) {
-
-  $ready = str_replace($delimiters, $delimiters[0], $string);
-  $launch = explode($delimiters[0], $ready);
-  return  $launch;
-}
 function displayFuriganaSongWithTranslate($furiganaText,$translateText){  
-  $furigana =  multiexplode(array("\n","。"),$furiganaText);
-  $translate =  multiexplode(array("\n","."),$translateText);
+  $furigana = explode( "\n", $furiganaText);
+  $translate = explode( "\n",$translateText);
   if(count($translate) == 1) return $furiganaText;
-
-  $html = "<br>";
-  for ($i=0; $i<=count($translate); $i++) {  
-          if( strlen( $furigana[$i]) !== 0){
-            $html.="$furigana[$i]。<br><span style='font-size:0.9em;color:#777'>$translate[$i].</span><br><br>";            
-          }
+  $html = "";
+  for ($i=0; $i<=count($translate); $i++) {               
+          $html.="$furigana[$i]<br><span style='font-size:0.9em;color:#777'>$translate[$i]</span><br><br>";            
   }            
   return $html;
 }
