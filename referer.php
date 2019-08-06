@@ -17,6 +17,9 @@ function checkFuriganaReferer($url){
 			if($table === 'article'){
 				$table = 'news';
 			}
+			else if($table === 'music'){
+				$table = 'song';
+			}
 			$rediect_url = "/bbs/board.php?bo_table=furigana_$table&wr_id=$id";
 			echo $rediect_url;			
 			return	$rediect_url;
