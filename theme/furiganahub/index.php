@@ -15,11 +15,11 @@ include_once(G5_THEME_PATH.'/head.php');
     
     
     <?php  echo latest('theme/basic','furigana_news', 5, 45);?>
-    <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("6629063040",728, 90)?></div>
+    <!-- <div style="text-align: center; margin-bottom: 20px;"><?=adsenseBanner("6629063040",728, 90)?></div> -->
     <?php  echo latest('theme/basic','furigana_song', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212",728, 90)?></div>
+    <!-- <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("1902338212",728, 90)?></div> -->
     <?php  echo latest('theme/basic','furigana_douwas', 5, 45);?>
-    <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558",728, 90)?></div>
+    <!-- <div style="text-align: center;margin-bottom: 20px;"><?=adsenseBanner("2214163558",728, 90)?></div> -->
 <div class="latest_wr">
     <!--  사진 최신글2 { -->
     <?php
@@ -36,7 +36,8 @@ include_once(G5_THEME_PATH.'/head.php');
     //  최신글    
     $sql = " select bo_table
                 from `{$g5['board_table']}` a left join `{$g5['group_table']}` b on (a.gr_id=b.gr_id)
-                where a.bo_device <> 'mobile' ";    
+                where a.bo_device <> 'mobile' 
+                and  a.bo_table not in ( 'furigana_song')  "; 
     if(!$is_admin){
         $sql .= " and a.bo_use_cert = '' ";
         $sql .= "  and b.gr_id <> 'issue'  ";

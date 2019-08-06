@@ -14,11 +14,11 @@ if (G5_IS_MOBILE) {
     <div id="aside2">
     <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>     
     <div style="margin-top:10px">       
-    <?=adsenseBanner("8544247119",160, 600)?>
+    <!-- <?=adsenseBanner("8544247119",160, 600)?> -->
     </div>
     </div>
     <div id="aside3">
-    <?=adsenseBanner("5002611441",160, 600)?>
+    <!-- <?=adsenseBanner("5002611441",160, 600)?> -->
     </div>
     <div id="aside">
     
@@ -41,7 +41,7 @@ if (G5_IS_MOBILE) {
         </div> 
         <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
         <div style="margin-top:20px;">
-        <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>    
+        <!-- <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>     -->
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         <?php echo visit('theme/basic'); // 접속자집계, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
         </div>

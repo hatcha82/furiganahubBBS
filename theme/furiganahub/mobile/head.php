@@ -113,9 +113,9 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 }
                 </script>
             </div>
-            <div class="">
+            <!-- <div class="">
                 <?=adfitBanner("DAN-1iut7aq2ij6es","250" ,"250")?>
-            </div>
+            </div> -->
         </div>
 
         <button type="button" id="user_btn" class="hd_opener"><i class="fa fa-user" aria-hidden="true"></i><span class="sound_only">사용자메뉴</span></button>
