@@ -67,7 +67,6 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
     } else if( strpos($translate[$i],$searchWord) !== false ){                       
       $foundIndex = $i;
     }
-
     if( $foundIndex > 0 && $lintCount <=10){
       $html.="$furigana[$i] $translate[$i]";            
     }
@@ -82,7 +81,6 @@ function displayFuriganaSongWithTranslate($furiganaText,$translateText){
   $furigana = explode( "\n", $furiganaText);
   $translate = explode( "\n",$translateText);
   if(count($translate) == 1) return $furiganaText;
-
   $html = "";
   for ($i=0; $i<=count($translate); $i++) {               
           $html.="$furigana[$i]<br><span style='font-size:0.9em;color:#777'>$translate[$i]</span><br><br>";            

@@ -14,11 +14,11 @@ if (G5_IS_MOBILE) {
     <div id="aside2">
     <?=adfitBanner("DAN-s4p36zan3oz6","160" ,"600")?>     
     <div style="margin-top:10px">       
-    <!-- <?=adsenseBanner("8544247119",160, 600)?> -->
+    <iframe width="160" height="600" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_160.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106090&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
     </div>
     </div>
     <div id="aside3">
-    <!-- <?=adsenseBanner("5002611441",160, 600)?> -->
+    <iframe width="160" height="600" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_160.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106091&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
     </div>
     <div id="aside">
     
@@ -39,7 +39,10 @@ if (G5_IS_MOBILE) {
                 <!-- <a target="_blank" href="https://www.youtube.com/watch?v=<coYw-eVU0Ks" ></a>        -->
             </div>
         </div> 
-        <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>   
+        <?=adfitBanner("DAN-vbszomwzby2f","300" ,"250")?>  
+        <div style="margin:10px auto;width:300px">
+        <iframe width="300" height="250" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/wp_ad_300.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106092&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe> 
+        </div>
         <div style="margin-top:20px;">
         <!-- <?=adfitBanner("DAN-1hbghscrx51kh","320" ,"100")?>     -->
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
