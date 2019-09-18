@@ -60,7 +60,7 @@ async function wowServerStatus(){
   
   await browser.close();
   console.log('done')
-  process.exit(1);
+  process.exit(0);
 }
 
 
