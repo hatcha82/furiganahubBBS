@@ -164,7 +164,7 @@ async function getNews(news){
 var newsList = [];
 (async () => {
 
-  browser = await puppeteer.launch({ headless: false,args: ['--no-sandbox',`--window-size=480,680`]})
+  browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox',`--window-size=480,680`]})
   const page = await browser.newPage()
 //   await page.tracing.start({
 //     path: 'trace.json',
