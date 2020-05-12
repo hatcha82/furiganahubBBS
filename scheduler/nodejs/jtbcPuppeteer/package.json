@@ -1,0 +1,24 @@
+{
+  "name": "puppeteerTest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint *.js --fix",
+    "dev": "nodemon ./index --exec \"npm run lint && node\"",
+    "start": "nodemon ./index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.9.0",
+    "dotenv": "^6.0.0",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.39.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.8.0",
+    "eslint-config-google": "^0.11.0"
+  }
+}
