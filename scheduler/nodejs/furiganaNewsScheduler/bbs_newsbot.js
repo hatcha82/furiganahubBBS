@@ -36,9 +36,10 @@ function listCrawlerCallBack(error, res, done) {
       var newsLit = $('ul.newsFeed_list li');
       
       var dateTime = $(newsLit[0]).find('div.newsFeed_item_sub > div > time').text()  
-      var date = new Date().getFullYear() + '/' + dateTime.split(' ')[0].substr(0,3)
+      var date = new Date().getFullYear() + '/' + dateTime.split(' ')[0].split('(')[0]
       var time = dateTime.split(' ')[1];
       var dateTime = moment(`${date} ${time}`,'YYYY/M/D HH:mm');
+      console.log(`${dateTime}`)
       newsLit.each(async function(){
         if(debug){
           
@@ -60,7 +61,7 @@ function listCrawlerCallBack(error, res, done) {
             article: null,
             furigana: null,
           }
-          console.log(param)
+          //console.log(param)
           var sequelize = new Sequelize(
             config.db.database,
             config.db.user,
@@ -153,9 +154,12 @@ async function detailCrawlerCallBack(error, res, done){
     var article = $('.yjDirectSLinkTarget').text();
     console.log(`
     News Title : ${param.title}
-    Article
-    ${article}
+    newsUrl: : ${param.newsUrl}
+    newsPublishedDate: ${param.newsPublishedDate}
     `)
+
+    // Article
+    // ${article}
         var sequelize = new Sequelize(
           config.db.database,
           config.db.user,
