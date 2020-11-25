@@ -151,7 +151,7 @@ async function detailCrawlerCallBack(error, res, done){
   }else{
     var $ = res.$;
     var param = res.options.param;
-    var article = $('.yjDirectSLinkTarget').text();
+    var article = $("#uamods > div.article_body > div > p").text();
     console.log(`
     News Title : ${param.title}
     newsUrl: : ${param.newsUrl}
