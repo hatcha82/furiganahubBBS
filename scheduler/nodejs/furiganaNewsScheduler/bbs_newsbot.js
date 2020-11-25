@@ -31,8 +31,8 @@ function listCrawlerCallBack(error, res, done) {
       console.log(error)
   }else{
       var $ = res.$;
-      var newslogo =$('#contentsWrap > div.mediaHeader > h2 > a > img').attr('src');
-      var newsCompanyName = $('#contentsWrap > div.mediaHeader > h2 > a > img').attr('alt');
+      var newslogo =$('#contentsWrap > div > h2 > a > img').attr('src');
+      var newsCompanyName = $('#contentsWrap > div > h2 > a > img').attr('alt');
       var newsLit = $('ul.newsFeed_list li');
       
       var dateTime = $(newsLit[0]).find('div.newsFeed_item_sub > div > time').text()  
@@ -155,7 +155,7 @@ async function detailCrawlerCallBack(error, res, done){
     console.log(`
     News Title : ${param.title}
     newsUrl: : ${param.newsUrl}
-    newsPublishedDate: ${param.newsPublishedDate}
+    newsPublishedDate: ${param.newsPublishedDate}    
     `)
 
     // Article
