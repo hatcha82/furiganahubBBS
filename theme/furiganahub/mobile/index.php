@@ -7,7 +7,7 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
 <!-- 메인화면 최신글 시작 -->
 
 
-     <?php  echo latest('theme/basic','furigana_news', 5, 25);?>
+     <?php  echo latest('theme/basic','furigana_news', 20, 25);?>
      <div style="max-width:320px;min-height:100px;margin:0 auto">
      <iframe width="320" style="min-height:100px" allowtransparency="true" src="https://mtab.clickmon.co.kr/pop/wp_m_320_100.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106093&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
      </div>
@@ -15,7 +15,7 @@ include_once(G5_THEME_MOBILE_PATH.'/head.php');
      <div style="max-width:320px;min-height:100px;margin:0 auto">
      <iframe width="320" style="min-height:100px" allowtransparency="true" src="https://mtab.clickmon.co.kr/pop/wp_m_320_100.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106094&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
      </div> -->
-     <?php  echo latest('theme/basic','furigana_douwas', 5, 25);?>
+     <?php  echo latest('theme/basic','furigana_douwas', 20, 25);?>
      <div style="max-width:320px;min-height:100px;margin:0 auto">
      <iframe width="320" style="min-height:100px" allowtransparency="true" src="https://mtab.clickmon.co.kr/pop/wp_m_320_100.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1054519%7C%5E%7CAdver_M_1046207&rt_ad_id_code=RTA_106095&mon_rf=REFERRER_URL" frameborder="0" scrolling="no"></iframe>
      </div>
