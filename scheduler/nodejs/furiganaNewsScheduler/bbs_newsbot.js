@@ -4,6 +4,7 @@ const Kuroshiro = require('kuroshiro')
 const KuromojiAnalyzer = require('kuroshiro-analyzer-kuromoji')
 const kuroshiro = new Kuroshiro()
 const Sequelize = require('sequelize')
+var moment = require('moment'); // require
 const config = require('./config/config')
 var debug = true
 var sequelize = new Sequelize(
@@ -30,18 +31,24 @@ function listCrawlerCallBack(error, res, done) {
       console.log(error)
   }else{
       var $ = res.$;
-      var newslogo = $('.logo').find('img').attr('src');
-      var newsCompanyName = $('.logo').find('img').attr('alt');
-      var newsLit = $('ul.ymuiList li');
+      var newslogo =$('#contentsWrap > div > h2 > a > img').attr('src');
+      var newsCompanyName = $('#contentsWrap > div > h2 > a > img').attr('alt');
+      var newsLit = $('ul.newsFeed_list li');
       
+      var dateTime = $(newsLit[0]).find('div.newsFeed_item_sub > div > time').text()  
+      var date = new Date().getFullYear() + '/' + dateTime.split(' ')[0].split('(')[0]
+      var time = dateTime.split(' ')[1];
+      var dateTime = moment(`${date} ${time}`,'YYYY/M/D HH:mm');
+      console.log(`${dateTime}`)
       newsLit.each(async function(){
         if(debug){
           
-          var title = $(this).find('.fsmt').text()
-          var newsURL = $(this).find('.fsmt').find('a').attr('href')
+          var title = $(this).find('a > div.newsFeed_item_text > div.newsFeed_item_title').text()
+          var newsURL = $(this).find('a').attr('href')
           var newsImagURL =$(this).find('img').attr('src')  
-          var date = $(this).find('.ymuiDate').text().replace('配信','')
-          newsURL = `https://headlines.yahoo.co.jp${newsURL}`
+          var date = $(this).find('.newsFeed_item_date').text().replace('配信','')
+          newsURL = newsURL;
+          
           
           var param = {
             title: title,
@@ -50,10 +57,11 @@ function listCrawlerCallBack(error, res, done) {
             newsImageUrl: newsImagURL,
             newsPublisher: newsCompanyName,
             newsPubllisherImageUrl: newslogo,
-            newsPublishedDate: new Date(`${new Date().getFullYear()} ${date}`),
+            newsPublishedDate: new Date(dateTime.format()),
             article: null,
             furigana: null,
           }
+          //console.log(param)
           var sequelize = new Sequelize(
             config.db.database,
             config.db.user,
@@ -137,17 +145,21 @@ SELECT  null                      wr_id,
  `
 
 async function detailCrawlerCallBack(error, res, done){
+
   if(error){
     console.log(error);
   }else{
     var $ = res.$;
     var param = res.options.param;
-    var article = $('.yjDirectSLinkTarget').text();
+    var article = $("#uamods > div.article_body > div > p").text();
     console.log(`
     News Title : ${param.title}
-    Article
-    ${article}
+    newsUrl: : ${param.newsUrl}
+    newsPublishedDate: ${param.newsPublishedDate}    
     `)
+
+    // Article
+    // ${article}
         var sequelize = new Sequelize(
           config.db.database,
           config.db.user,
@@ -162,7 +174,6 @@ async function detailCrawlerCallBack(error, res, done){
     param.updatedUserId = 3
     ;
 
-    
    try {
     const newArticle = await sequelize.query(insertsql,{replacements: param});
     console.log(newArticle);
@@ -208,7 +219,9 @@ async function addQueue(page, param){
     callback: listCrawlerCallBack,
     param : param,
   }] 
+
   await listCrawler.queue(crawlerparam)
+  
 }
 //start() 
 
