@@ -115,7 +115,7 @@ async function getNews(news){
       news['newsImageUrl'] = newsImageUrl[0] === undefined ? '' : newsImageUrl[0];
       var now = new Date();  
       moment.locale('ja')    
-      news['newsPublishedDate'] =  m_date[0] === undefined ?  null : moment(now.getFullYear() +  m_date[0],'ll').format('YYYY-mm-DD HH:mm:ss' )
+      news['newsPublishedDate'] =  m_date[0] === undefined ?  null : moment(now.getFullYear() +  m_date[0],'ll').format('YYYY-MM-DD HH:mm:ss' )
    
       newsPage.close(); 
       console.log(`크롤링: ${news.wr_subject} 종료`);     
@@ -174,7 +174,7 @@ SELECT  null                      wr_id,
         :newsPublisher            wr_name, 
         'hatcha82@gmail.com'      wr_email, 
         ''                        wr_homepage, 
-        now()                     wr_datetime, 
+        :newsPublishedDate        wr_datetime, 
         0                         wr_file, 
         :newsPublishedDate        wr_last, 
         '172.17.0.1'              wr_ip, 
@@ -229,7 +229,7 @@ async function addToDB(article){
 
 }
 var newsList = [];
-(async () => {
+(async () => {  
   await kuroshiro.init(new KuromojiAnalyzer());
   var result = await kuroshiro.convert("感じ取れたら手を繋ごう、重なるのは人生のライン and レミリア最高！", { to: "hiragana" });
   console.log(`Kuroshiro Started... \n ${result}`)
