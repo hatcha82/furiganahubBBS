@@ -15,6 +15,6 @@
     "image-to-base64": "^2.0.1",
     "mysql2": "^1.6.1",
     "request": "^2.88.0",
-    "sequelize": "^5.3.0"
+    "sequelize": "^5.15.1"
   }
 }
