@@ -113,9 +113,14 @@ async function getNews(news){
 
       news['newsPubllisherImageUrl'] = newsPubllisherImageUrl[0] === undefined ? '' : newsPubllisherImageUrl[0];
       news['newsImageUrl'] = newsImageUrl[0] === undefined ? '' : newsImageUrl[0];
-      var now = new Date();  
-      moment.locale('ja')    
-      news['newsPublishedDate'] =  m_date[0] === undefined ?  null : moment(now.getFullYear() +  m_date[0],'ll').format('YYYY-MM-DD HH:mm:ss' )
+
+      var dateTime = m_date[0] 
+      var date = new Date().getFullYear() + '/' + dateTime.split(' ')[0].split('(')[0]
+      var time = dateTime.split(' ')[1];
+      var dateTime = moment(`${date} ${time}`,'YYYY/M/D HH:mm');
+
+
+      news['newsPublishedDate'] = new Date(dateTime.format())
    
       newsPage.close(); 
       console.log(`크롤링: ${news.wr_subject} 종료`);     
