@@ -231,7 +231,7 @@ var newsList = [];
   var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})   
   console.log(`Article Count ${article[0].count}`)   
 
-  browser = await puppeteer.launch({ headless: false,args: ['--no-sandbox',`--window-size=480,680`]})
+  browser = await puppeteer.launch({ headless: true,args: ['--no-sandbox',`--window-size=480,680`]})
   const page = await browser.newPage()
 //   await page.tracing.start({
 //     path: 'trace.json',
