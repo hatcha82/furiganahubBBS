@@ -52,10 +52,8 @@ async function papagoTranslateKOR(article){
       response.text().then( async function (textBody) {
         JSONObj = JSON.parse(textBody)
         var translatedText =  JSONObj.translatedText.split('\n')
-       
         article['wr_8'] =translatedText.shift()        
         article['wr_10'] = translatedText.join('\n')    
-        console.log(article)
         // var original = article.wr_content.split('\n');
         // var translated = article['wr_12'].split('\n');
         // var allText = '';
