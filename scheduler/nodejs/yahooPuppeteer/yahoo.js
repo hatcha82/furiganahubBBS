@@ -113,8 +113,8 @@ async function getNews(news){
       news['titleFurigana'] = await kuroshiro.convert(news.wr_subject,{mode: 'furigana', to: 'hiragana', romajiSystem: 'passport'})
       news['furigana'] = await kuroshiro.convert(news['wr_content'] ,{mode: 'furigana', to: 'hiragana', romajiSystem: 'passport'})
 
-      news['newsPubllisherImageUrl'] = newsPubllisherImageUrl[0] === undefined ? null : newsPubllisherImageUrl[0];
-      news['newsImageUrl'] = newsImageUrl[0] === undefined ? null : newsImageUrl[0];
+      news['newsPubllisherImageUrl'] = newsPubllisherImageUrl[0] === undefined ? '' : newsPubllisherImageUrl[0];
+      news['newsImageUrl'] = newsImageUrl[0] === undefined ? '' : newsImageUrl[0];
       var now = new Date();  
       moment.locale('ja')    
       news['newsPublishedDate'] =  m_date[0] === undefined ?  null : moment(now.getFullYear() +  m_date[0],'ll').format('YYYY-mm-DD HH:mm:ss' )
@@ -210,6 +210,15 @@ async function addToDB(article){
     var sql = `update g5_write_furigana_news set wr_parent = wr_id where wr_id = ${newArticle[0]}`
     var result = await sequelize.query(sql);
     var sql = `update g5_board set bo_count_write = bo_count_write + 1 where bo_table = 'furigana_news'`
+    result = await sequelize.query(sql);
+
+    var updateCarteorySQL = `update g5_board
+    set bo_category_list =
+    (
+        select  group_concat(distinct(wr_name) SEPARATOR '|')
+        from    g5_write_furigana_news
+    )
+    where bo_table = 'furigana_news'`;
     result = await sequelize.query(sql);
     console.log(result);
     
