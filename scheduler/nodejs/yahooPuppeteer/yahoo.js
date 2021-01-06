@@ -99,7 +99,8 @@ async function getNews(news){
       var newsPage = await browser.newPage()
       await newsPage.goto(news.link, {waitUntil: 'networkidle2', timeout: 0})  
       const contents = await newsPage.$$eval('#uamods > div.article_body', contents =>  { return contents.map(content => content.innerText) })
-      console.log(contents)
+      if(contents.length == 0) return;
+      
       const newsPubllisherImageUrl =  await newsPage.$$eval('#uamods > header > div > div:nth-child(2) > a > img', contents =>  { return contents.map(content => content.src) }) 
       const newsPublisher =  await newsPage.$$eval('#uamods > header > div > div:nth-child(2) > a > img', contents =>  { return contents.map(content => content.alt) }) 
       const newsImageUrl =  await newsPage.$$eval('#uamods > div.article_body > div > div > div > a > div > picture > img', contents =>  { return contents.map(content => content.src) }) 
