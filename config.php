@@ -33,7 +33,7 @@ define('G5_HTTPS_DOMAIN', '');
 www.sir.kr 과 sir.kr 도메인은 서로 다른 도메인으로 인식합니다. 쿠키를 공유하려면 .sir.kr 과 같이 입력하세요.
 이곳에 입력이 없다면 www 붙은 도메인과 그렇지 않은 도메인은 쿠키를 공유하지 않으므로 로그인이 풀릴 수 있습니다.
 */
-define('G5_COOKIE_DOMAIN',  '');
+define('G5_COOKIE_DOMAIN',  'furiganahub.com');
 
 define('G5_DBCONFIG_FILE',  'dbconfig.php');
 
@@ -123,7 +123,7 @@ define('G5_PHPMAILER_PATH', G5_PLUGIN_PATH.'/'.G5_PHPMAILER_DIR);
 define('G5_SET_DEVICE', 'both');
 
 define('G5_USE_MOBILE', true); // 모바일 홈페이지를 사용하지 않을 경우 false 로 설정
-define('G5_USE_CACHE',  true); // 최신글등에 cache 기능 사용 여부
+define('G5_USE_CACHE',  false); // 최신글등에 cache 기능 사용 여부
 
 
 /********************
