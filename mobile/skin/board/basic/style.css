@@ -159,7 +159,7 @@ box-shadow: 0 0 8px rgba(65,98,255,0.8);}
 #bo_v_link ul {margin:0;padding:0;list-style:none}
 #bo_v_link li {padding: 10px;border-bottom:1px solid #fff;background:#f1f7fa;color:#777}
 #bo_v_link a {display:block;color:#000;text-decoration:none;margin:0 0 3px}
-#bo_v_link a strong{color:#3497d9;text-decoration:underline}
+#bo_v_link a strong{color:#3497d9;text-decoration:underline;overflow: hidden;text-overflow: ellipsis;width: 300px;display: block;}
 #bo_v_link a:focus, #bo_v_link a:hover, #bo_v_link a:active {text-decoration:none}
 .bo_v_link_cnt {font-size:0.92em}
 
