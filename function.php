@@ -80,6 +80,8 @@ function displayFuriganaWithTranslateSearchResult($furiganaText,$translateText,$
 function displayFuriganaSongWithTranslate($furiganaText,$translateText){  
   $furigana = explode( "\n", $furiganaText);
   $translate = explode( "\n",$translateText);
+  array_shift($translate);
+  array_shift($translate);
   if(count($translate) == 1) return $furiganaText;
   $html = "";
   for ($i=0; $i<=count($translate); $i++) {               
