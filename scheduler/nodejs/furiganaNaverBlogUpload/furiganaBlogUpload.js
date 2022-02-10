@@ -134,7 +134,7 @@ async function createContents(articles){
 async function blogUpload(){
   var articles = await getArticle();
 
-  if(articles.length < 2){
+  if(articles.length < 5){
     console.log(`새로운 뉴스가 없습니다. ${articles.length}` )    
     return;
   }
