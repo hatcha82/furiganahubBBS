@@ -41,7 +41,7 @@ async function getArticle(){
   WHERE wr_5 = 'N'
   AND   wr_8 <> ''
   AND   wr_10 <> ''
-  AND   wr_datetime  BETWEEN DATE_SUB(NOW(),INTERVAL 1 hour) AND NOW()
+  AND   wr_datetime  BETWEEN DATE_SUB(NOW(),INTERVAL 3 hour) AND NOW()
   ORDER BY wr_datetime desc
   LIMIT 10
   `
