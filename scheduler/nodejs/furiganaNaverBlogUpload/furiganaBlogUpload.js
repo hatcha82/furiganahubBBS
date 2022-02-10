@@ -43,6 +43,7 @@ async function getArticle(){
   AND   wr_10 <> ''
   AND   wr_datetime  BETWEEN DATE_SUB(NOW(),INTERVAL 1 hour) AND NOW()
   ORDER BY wr_datetime desc
+  LIMIT 10
   `
   ;
   var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})  
