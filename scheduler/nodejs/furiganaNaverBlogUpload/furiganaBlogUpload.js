@@ -29,7 +29,7 @@ const sourceText = '';
     console.log(`Error : ${error}` )
     process.exit(1);
   }
-  process.exit(0);
+  
 })();
 
 async function getArticle(){
@@ -195,7 +195,7 @@ async function blogUpload(){
   
   var randomSec = Math.floor(Math.random() * 4 ) + 6;
   await page.waitFor(randomSec * 1000);  
-  await editorFrame.click("#btn_submit");
+ await editorFrame.click("#btn_submit");
 
 
   news.articles.forEach( async (article) => {
@@ -206,6 +206,6 @@ async function blogUpload(){
   console.log("종료합니다.")
   await page.waitFor(10 * 1000);  
   await browser.close();
-
+  process.exit(1);
 }
 
