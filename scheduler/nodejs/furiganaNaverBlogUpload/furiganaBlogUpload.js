@@ -29,6 +29,7 @@ const sourceText = '';
     console.log(`Error : ${error}` )
     process.exit(1);
   }
+  process.exit(1);	
   
 })();
 
@@ -47,7 +48,6 @@ async function getArticle(){
   `
   ;
   var article = await sequelize.query(sql, { type: sequelize.QueryTypes.SELECT})  
-  console.log(article)
   sequelize.close()  
   return article;
   
@@ -71,12 +71,11 @@ async function updateArticle(article){
   
 }
 async function createContents(articles){
- 
   //var sourceText = `${article.wr_subject}\n${article.wr_content}` 
   articles.sort(() => (Math.random() > .5) ? 1 : -1);
-  var templateMain = await fs.readFileSync('templateMain.html', 'utf8')  
-  var templateContent = await fs.readFileSync('templateContent.html', 'utf8')
-  var templateOtherList = await fs.readFileSync('templateOtherList.html', 'utf8')  
+  var templateMain = await fs.readFileSync(`${__dirname}/templateMain.html`, 'utf8')  
+  var templateContent = await fs.readFileSync(`${__dirname}/templateContent.html`, 'utf8')
+  var templateOtherList = await fs.readFileSync(`${__dirname}/templateOtherList.html`, 'utf8')  
   var body = templateMain;
   var contents = ''
 
@@ -206,6 +205,5 @@ async function blogUpload(){
   console.log("종료합니다.")
   await page.waitFor(10 * 1000);  
   await browser.close();
-  process.exit(1);
 }
 
