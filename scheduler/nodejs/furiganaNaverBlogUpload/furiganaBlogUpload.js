@@ -143,7 +143,7 @@ async function blogUpload(){
   //if(article == null) return;
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: ['--no-sandbox',`--window-size=1200,800`]
   });
   const page = await browser.newPage();
@@ -188,13 +188,27 @@ async function blogUpload(){
   await editorFrame.evaluate(news => {
       var subjectSelector = '#subject';  
       var contentsSelector = '#smart_editor2_content > div.se2_input_area.husky_seditor_editing_area_container > textarea.se2_input_syntax.se2_input_htmlsrc';
+      var tags = news.subject.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
       document.querySelector(subjectSelector).value = news.subject
       document.querySelector(contentsSelector).value =  news.body
+      tags = tags.split(' ');
+      var newsTag = ''
+      tags.forEach( async (tag,idx) => {
+        if(idx < 30){
+          newsTag += '#' + tag + ',';
+        }
+      });
+
+      document.querySelector('#tagList').value =  newsTag
+     
   }, news);
+
   
+
   var randomSec = Math.floor(Math.random() * 4 ) + 6;
   await page.waitFor(randomSec * 1000);  
- await editorFrame.click("#btn_submit");
+
+  await editorFrame.click("#btn_submit");
 
 
   news.articles.forEach( async (article) => {
@@ -205,5 +219,6 @@ async function blogUpload(){
   console.log("종료합니다.")
   await page.waitFor(10 * 1000);  
   await browser.close();
+
 }
 
