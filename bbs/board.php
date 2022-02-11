@@ -138,7 +138,7 @@ if (isset($wr_id) && $wr_id) {
         set_session($ss_name, TRUE);
     }
     if( strpos($board['bo_table'],'furigana')  !== false){
-        $g5['title'] =strip_tags(conv_subject($write['wr_8'], 255))." > ".$g5['board_title'];
+        $g5['title'] =strip_tags(conv_subject($write['wr_8'], 255)).' - ' . strip_tags(conv_subject($write['wr_subject'], 255)) ." > ".$g5['board_title'];
     }else{
         $g5['title'] =strip_tags(conv_subject($write['wr_subject'], 255))." > ".$g5['board_title'];
     }
