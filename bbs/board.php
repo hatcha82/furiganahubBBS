@@ -139,9 +139,22 @@ if (isset($wr_id) && $wr_id) {
     }
     if( strpos($board['bo_table'],'furigana')  !== false){
         $g5['title'] =strip_tags(conv_subject($write['wr_8'], 255)).' - ' . strip_tags(conv_subject($write['wr_subject'], 255)) ." > ".$g5['board_title'];
+        if( strpos($board['bo_table'],'furigana_news')  !== false){
+            $g5['ogtagurl'] = G5_URL . "/bbs/board.php?bo_table=furigana_news&wr_id=" . $write['wr_id'];
+            $g5['ogtagtitle']= strip_tags(conv_subject($write['wr_8'], 255));
+            $g5['ogtagdescription']= strip_tags(conv_subject($write['wr_subject'], 255))             ;
+            try {
+                $imagesize = getimagesize($write['wr_1']);      
+                $g5['ogtagimage']= $write['wr_1'];
+            } catch (\Throwable $th) {
+                $g5['ogtagimage']= G5_IMG_URL . "/logo.jpg";
+            }
+        }
     }else{
         $g5['title'] =strip_tags(conv_subject($write['wr_subject'], 255))." > ".$g5['board_title'];
     }
+    
+  
 } else {
     if ($member['mb_level'] < $board['bo_list_level']) {
         if ($member['mb_id'])

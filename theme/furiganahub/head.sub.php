@@ -42,6 +42,13 @@ if (G5_IS_MOBILE) {
     echo '<meta http-equiv="imagetoolbar" content="no">'.PHP_EOL;
     echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">'.PHP_EOL;
 }
+if($g5['ogtagurl']){
+    echo '<meta property="og:url" content="'.$g5['ogtagurl'].'">'.PHP_EOL;
+    echo '<meta property="og:title" content="'.$g5['ogtagtitle'].'">'.PHP_EOL;
+    echo '<meta property="og:type" content="website">'.PHP_EOL;
+    echo '<meta property="og:"description content="'.$g5['ogtagdescription'].'">'.PHP_EOL;
+    echo '<meta property="og:image" content="'.$g5['ogtagimage'].'">'.PHP_EOL;
+}
 
 if($config['cf_add_meta'])
     echo $config['cf_add_meta'].PHP_EOL;
