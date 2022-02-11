@@ -143,7 +143,7 @@ async function blogUpload(){
   //if(article == null) return;
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ['--no-sandbox',`--window-size=1200,800`]
   });
   const page = await browser.newPage();
