@@ -189,7 +189,7 @@ async function blogUpload(){
   await editorFrame.evaluate(news => {
       var subjectSelector = '#subject';  
       var contentsSelector = '#smart_editor2_content > div.se2_input_area.husky_seditor_editing_area_container > textarea.se2_input_syntax.se2_input_htmlsrc';
-      var tags = 'furigana furiganahub 일본어 일본어공부 일본뉴스 일본 jlpt JLPT '+ news.subject.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+      var tags = 'furigana furiganahub 후리가나 후리가나허브 일본어 일본어공부 일본뉴스 일본 jlpt JLPT '+ news.subject.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
       document.querySelector(subjectSelector).value = news.subject
       document.querySelector(contentsSelector).value =  news.body
       tags = tags.split(' ');
