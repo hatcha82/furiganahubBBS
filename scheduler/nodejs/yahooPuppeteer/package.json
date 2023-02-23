@@ -16,7 +16,7 @@
     "moment": "^2.29.1",
     "mysql2": "^1.6.1",
     "puppeteer": "^1.9.0",
-    "sequelize": "^4.39.0",
+    "sequelize": "^6.28.2",
     "kuroshiro": "^1.1.1",
     "kuroshiro-analyzer-kuromoji": "^1.1.0"
   },
